@@ -1,0 +1,280 @@
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { MapPin, Github, Linkedin, Mail, ExternalLink, Phone, Calendar, Clock, Send } from "lucide-react";
+
+export default function ContactPage() {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="pt-20 pb-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Get in Touch
+            </h1>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Interested in data science, policy research, or building interactive systems? 
+              I'd love to hear from you and discuss potential collaborations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form & Info */}
+      <section className="py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Contact Form */}
+            <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">
+                  Send a Message
+                </CardTitle>
+                <CardDescription className="text-slate-600 dark:text-slate-300">
+                  Fill out the form below and I'll get back to you as soon as possible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="John"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Doe"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Subject
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    >
+                      <option value="">Select a subject</option>
+                      <option value="collaboration">Project Collaboration</option>
+                      <option value="research">Research Discussion</option>
+                      <option value="consulting">Consulting Opportunity</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={6}
+                      className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      placeholder="Tell me about your project or how we can work together..."
+                    ></textarea>
+                  </div>
+                  
+                  <Button type="submit" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+                    <Send className="mr-2 h-4 w-4" />
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
+              <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
+                    Contact Information
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                      <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-900 dark:text-white">Email</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">taemin@umich.edu</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                      <MapPin className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-900 dark:text-white">Location</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">Ann Arbor, Michigan</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                      <Calendar className="h-5 w-5 text-green-600 dark:text-green-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-900 dark:text-white">Availability</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">Available for new opportunities</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
+                    Social Links
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    <Button variant="outline" className="w-full justify-start border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
+                      <Github className="mr-3 h-4 w-4" />
+                      GitHub Profile
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
+                      <Linkedin className="mr-3 h-4 w-4" />
+                      LinkedIn Profile
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
+                      <Mail className="mr-3 h-4 w-4" />
+                      Send Email
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What I'm Looking For */}
+      <section className="py-12 bg-white/50 dark:bg-slate-900/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+              What I'm Looking For
+            </h2>
+            <p className="text-slate-600 dark:text-slate-300">
+              Opportunities and collaborations that align with my interests
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto mb-3 p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <Mail className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <CardTitle className="text-lg">Research Collaborations</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center pt-0">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  Data science projects focused on policy research, migration analysis, 
+                  and behavioral pattern recognition.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto mb-3 p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <Clock className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <CardTitle className="text-lg">Internship Opportunities</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center pt-0">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  Summer internships in data science, policy analysis, or 
+                  full-stack development roles.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+              <CardHeader className="text-center pb-4">
+                <div className="mx-auto mb-3 p-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <Send className="h-6 w-6 text-green-600 dark:text-green-400" />
+                </div>
+                <CardTitle className="text-lg">Open Source Projects</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center pt-0">
+                <p className="text-sm text-slate-600 dark:text-slate-300">
+                  Contributing to open source projects in data visualization, 
+                  policy research tools, or educational platforms.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Response Time */}
+      <section className="py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+            <CardContent className="py-8">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                  Response Time
+                </h3>
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
+                I typically respond to messages within 24-48 hours during weekdays. 
+                For urgent matters, please include "URGENT" in your subject line.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <span className="flex items-center gap-1">
+                  <Calendar className="h-4 w-4" />
+                  Weekdays: 9 AM - 6 PM EST
+                </span>
+                <span className="flex items-center gap-1">
+                  <Clock className="h-4 w-4" />
+                  Response: 24-48 hours
+                </span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    </>
+  );
+} 
