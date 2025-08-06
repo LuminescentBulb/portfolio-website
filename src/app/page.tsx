@@ -50,67 +50,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
+      {/* Live Project Demo Section */}
       <section className="py-16 bg-white/50 dark:bg-slate-900/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-              Technical Skills
+              Live Project Demo
             </h2>
-            <p className="text-slate-600 dark:text-slate-300">
-              Full-stack development, simulation modeling, and statistical analysis
+            <p className="text-slate-600 dark:text-slate-300 mb-6">
+              Explore my EU Intra-Migration Dashboard in real-time
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-3 p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                  <Code className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+          <Card className="border-0 pb-0 shadow-lg overflow-hidden bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+            <CardHeader className="pb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                  <Globe className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </div>
-                <CardTitle className="text-lg">Full-Stack Development</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center pt-0">
-                <div className="flex flex-wrap justify-center gap-1.5">
-                  <Badge variant="secondary" className="text-xs">React</Badge>
-                  <Badge variant="secondary" className="text-xs">Next.js</Badge>
-                  <Badge variant="secondary" className="text-xs">Prisma</Badge>
-                  <Badge variant="secondary" className="text-xs">PostgreSQL</Badge>
+                <div>
+                  <CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
+                    EU Intra-Migration Dashboard
+                  </CardTitle>
+                  <CardDescription className="text-slate-600 dark:text-slate-300">
+                    Interactive visualization of European migration flows since EU expansion
+                  </CardDescription>
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-3 p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <Database className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                </div>
-                <CardTitle className="text-lg">Simulation & Modeling</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center pt-0">
-                <div className="flex flex-wrap justify-center gap-1.5">
-                  <Badge variant="secondary" className="text-xs">C++</Badge>
-                  <Badge variant="secondary" className="text-xs">Simulation</Badge>
-                  <Badge variant="secondary" className="text-xs">Modeling</Badge>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-3 p-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <BarChart3 className="h-6 w-6 text-green-600 dark:text-green-400" />
-                </div>
-                <CardTitle className="text-lg">Data Analysis</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center pt-0">
-                <div className="flex flex-wrap justify-center gap-1.5">
-                  <Badge variant="secondary" className="text-xs">Python</Badge>
-                  <Badge variant="secondary" className="text-xs">pandas</Badge>
-                  <Badge variant="secondary" className="text-xs">scikit-learn</Badge>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0 h-[32rem] md:h-[38rem]">
+              <div className="relative w-full h-full m-0 p-0">
+                <iframe 
+                  src="https://eu-dashboard.stellux.org/?embedded=true" 
+                  className="absolute top-0 left-0 w-full h-full border-0 m-0 p-0"
+                  allowFullScreen
+                  title="EU Migration Dashboard"
+                />
+              </div>
+            </CardContent>
+          </Card>
+          
+          <div className="mt-8 text-center">
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+              Built with React, Deck.gl, MapLibre, and Eurostat data
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
+                <ExternalLink className="mr-2 h-3 w-3" />
+                View Full Project
+              </Button>
+              <Button variant="outline" size="sm">
+                <Github className="mr-2 h-3 w-3" />
+                Source Code
+              </Button>
+            </div>
           </div>
         </div>
       </section>
