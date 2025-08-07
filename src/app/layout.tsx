@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { FloatingMenu } from "@/components/floating-menu";
 import { Footer } from "@/components/footer";
-
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Taemin - Data Science Portfolio",
@@ -30,6 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <Analytics />
       <head>
         <link
           rel="stylesheet"
