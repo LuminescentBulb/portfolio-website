@@ -94,7 +94,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
       excerpt: data.excerpt || content.slice(0, 150) + '...',
       content: contentHtml,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

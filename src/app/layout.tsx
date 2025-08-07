@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { FloatingMenu } from "@/components/floating-menu";
 import { Footer } from "@/components/footer";
-import Script from "next/script";
+
 
 export const metadata: Metadata = {
   title: "Taemin - Data Science Portfolio",

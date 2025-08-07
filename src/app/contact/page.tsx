@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { MapPin, Github, Linkedin, Mail, ExternalLink, Phone, Calendar, Clock, Send } from "lucide-react";
+import { MapPin, Github, Linkedin, Mail, Calendar, Clock, Send } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -16,7 +14,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               Interested in data science, policy research, or building interactive systems? 
-              I'd love to hear from you and discuss potential collaborations.
+              I&apos;d love to hear from you and discuss potential collaborations.
             </p>
           </div>
         </div>
@@ -33,7 +31,7 @@ export default function ContactPage() {
                   Send a Message
                 </CardTitle>
                 <CardDescription className="text-slate-600 dark:text-slate-300">
-                  Fill out the form below and I'll get back to you as soon as possible.
+                  Fill out the form below and I&apos;ll get back to you as soon as possible.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -171,7 +169,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
-              What I'm Looking For
+              What I&apos;m Looking For
             </h2>
             <p className="text-slate-600 dark:text-slate-300">
               Opportunities and collaborations that align with my interests

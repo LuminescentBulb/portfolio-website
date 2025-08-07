@@ -1,9 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { MapPin, Github, Linkedin, Mail, ExternalLink, GraduationCap, Calendar, Users, Award, BookOpen, Code, Database, BarChart3 } from "lucide-react";
+import { MapPin, GraduationCap, Calendar, Users, Code, Database, BarChart3 } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -25,14 +23,14 @@ export default function AboutPage() {
             </h1>
             <div className="text-base text-left text-slate-600 dark:text-slate-300 max-w-3xl mx-auto space-y-4">
               <p>
-                Hi, my name is <strong>Taemin Kim</strong>. I'm from Portland, Oregon, and I am currently
+                Hi, my name is <strong>Taemin Kim</strong>. I&apos;m from Portland, Oregon, and I am currently
                 a Data Science student at the University of Michigan, deeply interested in the intersection of sociology, economics, and technology.
                 I’m passionate about exploring how data-driven approaches can help us understand human behavior and societal trends,
                 especially in areas like <strong>migration</strong>, <strong>economic policy</strong>, and <strong>social systems</strong>.
               </p>
               <p>
                 I focus on building interactive data visualizations and simulation models that bridge the gap between raw data and actionable insights.
-                Currently, I'm developing an economic and politics simulation game that
+                Currently, I&apos;m developing an economic and politics simulation game that
                 uses real-world data and behavioral models to let players explore how policy decisions and
                 <strong> social dynamics</strong> shape outcomes.
               </p>

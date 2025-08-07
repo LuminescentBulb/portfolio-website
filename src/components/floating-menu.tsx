@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -63,7 +63,7 @@ export function FloatingMenu() {
     });
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!isDragging || isMobile) return;
 
     const newX = e.clientX - dragOffset.x;
@@ -77,11 +77,11 @@ export function FloatingMenu() {
       x: Math.max(0, Math.min(newX, maxX)),
       y: Math.max(0, Math.min(newY, maxY)),
     });
-  };
+  }, [isDragging, isMobile, dragOffset]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
   const toggleCollapsed = () => {
     setIsCollapsed(!isCollapsed);
@@ -101,7 +101,7 @@ export function FloatingMenu() {
         document.body.style.userSelect = "";
       };
     }
-  }, [isDragging, dragOffset, isMobile]);
+  }, [isDragging, dragOffset, isMobile, handleMouseMove, handleMouseUp]);
 
   // If collapsed, show just a single bubble with menu icon
   if (isCollapsed) {
