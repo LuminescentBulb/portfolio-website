@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/customui/lightdarktoggle";
-import { Home, FolderOpen, User, Mail, GripVertical } from "lucide-react";
+import { Home, FolderOpen, User, Mail, GripVertical, Menu, X } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
@@ -20,6 +20,7 @@ export function FloatingMenu() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const pathname = usePathname();
 
   // Check if device is mobile
@@ -81,6 +82,10 @@ export function FloatingMenu() {
     setIsDragging(false);
   };
 
+  const toggleCollapsed = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   useEffect(() => {
     if (isDragging && !isMobile) {
       document.addEventListener("mousemove", handleMouseMove);
@@ -97,14 +102,48 @@ export function FloatingMenu() {
     }
   }, [isDragging, dragOffset, isMobile]);
 
+  // If collapsed, show just a single bubble with menu icon
+  if (isCollapsed) {
+    return (
+      <div
+        className="fixed z-50 transition-transform duration-200 ease-out"
+        style={{
+          left: isMobile ? 16 : position.x,
+          top: isMobile ? 16 : position.y,
+          right: isMobile ? 16 : undefined,
+          transform: isDragging ? "scale(1.05)" : "scale(1)",
+        }}
+      >
+        <div 
+          className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg border border-white/20 dark:border-slate-700/50 rounded-full p-3 cursor-grab active:cursor-grabbing"
+          onMouseDown={handleMouseDown}
+        >
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn(
+              "hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200",
+              isMobile ? "h-10 w-10 rounded-full" : "h-8 w-8"
+            )}
+            onClick={toggleCollapsed}
+            title="Open menu"
+          >
+            <Menu className="h-4 w-4 text-slate-600 dark:text-slate-400" />
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
-      className="fixed z-50 transition-transform duration-200 ease-out"
+      className="fixed z-50 transition-all duration-300 ease-out"
       style={{
         left: isMobile ? 16 : position.x,
         top: isMobile ? 16 : position.y,
         right: isMobile ? 16 : undefined,
         transform: isDragging ? "scale(1.05)" : "scale(1)",
+        animation: isMobile ? "fadeIn 0.3s ease-out" : "slideIn 0.3s ease-out",
       }}
     >
       <div className={cn(
@@ -120,7 +159,7 @@ export function FloatingMenu() {
           {/* Drag handle - desktop only */}
           {!isMobile && (
             <div
-              className="flex justify-center pb-2 cursor-grab active:cursor-grabbing"
+              className="flex justify-center cursor-grab active:cursor-grabbing"
               onMouseDown={handleMouseDown}
             >
               <GripVertical className="h-4 w-4 text-slate-400 dark:text-slate-500" />
@@ -128,7 +167,7 @@ export function FloatingMenu() {
           )}
 
           {/* Navigation buttons */}
-          {navigation.map((item) => {
+          {navigation.map((item, index) => {
             const Icon = item.icon;
             return (
               <Link key={item.name} href={item.href}>
@@ -145,6 +184,11 @@ export function FloatingMenu() {
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                   )}
                   title={item.name}
+                  style={{
+                    animation: isMobile 
+                      ? `fadeInButton 0.3s ease-out ${index * 0.05}s both`
+                      : `slideInButton 0.3s ease-out ${index * 0.05}s both`
+                  }}
                 >
                   <Icon className="h-4 w-4" />
                 </Button>
@@ -154,15 +198,109 @@ export function FloatingMenu() {
 
           {/* Divider - desktop only */}
           {!isMobile && (
-            <div className="h-px bg-slate-200 dark:bg-slate-700 my-1" />
+            <div 
+              className="h-px bg-slate-200 dark:bg-slate-700 my-1"
+              style={{
+                animation: "slideInDivider 0.3s ease-out 0.2s both"
+              }}
+            />
           )}
 
           {/* Theme toggle */}
-          <div className="flex justify-center">
-            <ThemeToggle />
+          <div 
+            className="flex justify-center"
+            style={{
+              animation: isMobile 
+                ? "fadeInButton 0.3s ease-out 0.25s both"
+                : "slideInButton 0.3s ease-out 0.25s both"
+            }}
+          >
+            <ThemeToggle 
+              className={isMobile ? "h-10 w-10 rounded-full" : ""}
+            />
+          </div>
+
+          {/* Close button - styled differently */}
+          <div 
+            className="flex justify-center"
+            style={{
+              animation: isMobile 
+                ? "fadeInButton 0.3s ease-out 0.3s both"
+                : "slideInButton 0.3s ease-out 0.3s both"
+            }}
+          >
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                "hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200",
+                isMobile ? "h-10 w-10 rounded-full" : "h-8 w-8"
+              )}
+              onClick={toggleCollapsed}
+              title="Close menu"
+            >
+              <X className="h-4 w-4 text-red-500 dark:text-red-400" />
+            </Button>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8) translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes slideInButton {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes fadeInButton {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes slideInDivider {
+          from {
+            opacity: 0;
+            transform: scaleX(0);
+          }
+          to {
+            opacity: 1;
+            transform: scaleX(1);
+          }
+        }
+      `}</style>
     </div>
   );
 } 

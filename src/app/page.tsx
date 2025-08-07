@@ -5,13 +5,13 @@ import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MapPin, Github, Linkedin, Mail, ExternalLink, Database, Code, BarChart3, Globe, TrendingUp, Users, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 pb-12">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/3 to-purple-500/3"></div>
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-6">
@@ -23,27 +23,35 @@ export default function Home() {
               </Avatar>
             </div>
             <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 dark:from-white dark:via-slate-200 dark:to-white bg-clip-text text-transparent mb-3">
-              Taemin
+              Taemin Kim
             </h1>
             <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-4 max-w-xl mx-auto">
-              Data Science Major at University of Michigan
+              Data Science Major at the University of Michigan
             </p>
             <p className="text-sm text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Passionate about building complex systems that bring data, policy, and human behavior into interactive environments. 
-              Specializing in data visualization, simulation modeling, and applied analytics.
+              Passionate about building complex systems that bring data, policy, and human behavior into interactive environments.
             </p>
             <div className="flex flex-wrap justify-center gap-2 mb-6">
-              <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-sm hover:shadow-md transition-all duration-200">
-                <Mail className="mr-2 h-3.5 w-3.5" />
-                Get in Touch
+              <Button
+                asChild
+                size="sm"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <Link href="/about">
+                  <ArrowRight className="mr-2 h-3.5 w-3.5" />
+                  About Me
+                </Link>
               </Button>
-              <Button variant="outline" size="sm" className="border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
-                <Github className="mr-2 h-3.5 w-3.5" />
-                GitHub
-              </Button>
-              <Button variant="outline" size="sm" className="border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
-                <Linkedin className="mr-2 h-3.5 w-3.5" />
-                LinkedIn
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+              >
+                <Link href="/contact">
+                  <Mail className="mr-2 h-3.5 w-3.5" />
+                  Get in Touch
+                </Link>
               </Button>
             </div>
           </div>
@@ -61,9 +69,9 @@ export default function Home() {
               Explore my EU Intra-Migration Dashboard in real-time
             </p>
           </div>
-          
-          <Card className="border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
-            <CardHeader className="pb-3">
+
+          <Card className="border-0 pb-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
+            <CardHeader className="pb-0">
               <div className="flex items-center gap-3">
                 <div className="p-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-md">
                   <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />
@@ -80,8 +88,8 @@ export default function Home() {
             </CardHeader>
             <CardContent className="p-0 h-[28rem] md:h-[32rem]">
               <div className="relative w-full h-full m-0 p-0">
-                <iframe 
-                  src="https://eu-dashboard.stellux.org/?embedded=true" 
+                <iframe
+                  src="https://eu-dashboard.stellux.org/?embedded=true"
                   className="absolute top-0 left-0 w-full h-full border-0 m-0 p-0"
                   allowFullScreen
                   title="EU Migration Dashboard"
@@ -89,7 +97,7 @@ export default function Home() {
               </div>
             </CardContent>
           </Card>
-          
+
           <div className="mt-6 text-center">
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
               Built with React, Deck.gl, MapLibre, and Eurostat data
@@ -136,13 +144,13 @@ export default function Home() {
                       <Badge variant="outline" className="text-xs">Data Visualization</Badge>
                       <Badge variant="outline" className="text-xs">Policy Research</Badge>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                       EU Intra-Migration Dashboard
                     </h3>
-                    
+
                     <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                      An interactive web dashboard visualizing intra-European migration flows since EU expansion. 
+                      An interactive web dashboard visualizing intra-European migration flows since EU expansion.
                       This project integrates performant mapping, demographic overlays, and policy-relevant analytics.
                     </p>
 
@@ -178,7 +186,7 @@ export default function Home() {
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-5 lg:p-6 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-3 mx-auto">
@@ -205,13 +213,13 @@ export default function Home() {
                       <Badge variant="outline" className="text-xs">C++</Badge>
                       <Badge variant="outline" className="text-xs">Simulation</Badge>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                       Policy Impact Simulation Models
                     </h3>
-                    
+
                     <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                      High-performance simulation models for analyzing policy impacts on complex systems. 
+                      High-performance simulation models for analyzing policy impacts on complex systems.
                       Built with C++ for computational efficiency and real-time policy scenario testing.
                     </p>
 
@@ -247,7 +255,7 @@ export default function Home() {
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-5 lg:p-6 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center mb-3 mx-auto">
@@ -274,13 +282,13 @@ export default function Home() {
                       <Badge variant="outline" className="text-xs">Python</Badge>
                       <Badge variant="outline" className="text-xs">Machine Learning</Badge>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
                       Behavioral Analytics Platform
                     </h3>
-                    
+
                     <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                      Advanced analytics platform for understanding human behavior patterns in policy contexts. 
+                      Advanced analytics platform for understanding human behavior patterns in policy contexts.
                       Combines statistical analysis with machine learning for predictive insights.
                     </p>
 
@@ -316,7 +324,7 @@ export default function Home() {
                       </Button>
                     </div>
                   </div>
-                  
+
                   <div className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-5 lg:p-6 flex items-center justify-center">
                     <div className="text-center">
                       <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center mb-3 mx-auto">
@@ -334,66 +342,6 @@ export default function Home() {
               </Card>
             </TabsContent>
           </Tabs>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-12 bg-white/30 dark:bg-slate-900/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-              About Me
-            </h2>
-            <Separator className="w-12 mx-auto" />
-          </div>
-          
-          <div className="prose prose-sm dark:prose-invert max-w-none">
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-              I'm a data science major at the University of Michigan, passionate about building complex systems 
-              that bring data, policy, and human behavior into interactive environments. My work spans data 
-              visualization, simulation modeling, and applied analytics—each project rooted in a practical goal: 
-              turning raw data into insight or immersion.
-            </p>
-            
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-              I work across full-stack development (React, Next.js, Prisma, PostgreSQL), simulation (C++), 
-              and statistical analysis (Python, pandas, scikit-learn), with a focus on realistic, 
-              policy-relevant systems.
-            </p>
-            
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-              The EU Intra-Migration Dashboard targets policy researchers and academics, providing a clear 
-              visual of how population movement is consolidating wealth and deepening regional inequality.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-12 bg-slate-50/30 dark:bg-slate-800/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-            Let's Connect
-          </h2>
-          <p className="text-slate-600 dark:text-slate-300 mb-8 max-w-xl mx-auto">
-            Interested in data science, policy research, or building interactive systems? 
-            I'd love to hear from you.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-2">
-            <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-sm hover:shadow-md transition-all duration-200">
-              <Mail className="mr-2 h-3.5 w-3.5" />
-              Send Message
-            </Button>
-            <Button variant="outline" size="sm" className="border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
-              <Github className="mr-2 h-3.5 w-3.5" />
-              GitHub
-            </Button>
-            <Button variant="outline" size="sm" className="border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800">
-              <Linkedin className="mr-2 h-3.5 w-3.5" />
-              LinkedIn
-            </Button>
-          </div>
         </div>
       </section>
     </>

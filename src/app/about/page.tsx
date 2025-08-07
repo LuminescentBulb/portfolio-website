@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="pt-20 pb-12">
+      <section className="pt-20 pb-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-8">
@@ -20,13 +20,23 @@ export default function AboutPage() {
                 </AvatarFallback>
               </Avatar>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-8">
               About Me
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Data Science Major at University of Michigan, passionate about building complex systems 
-              that bring data, policy, and human behavior into interactive environments.
-            </p>
+            <div className="text-base text-left text-slate-600 dark:text-slate-300 max-w-3xl mx-auto space-y-4">
+              <p>
+                Hi, my name is <strong>Taemin Kim</strong>.
+                I'm a Data Science student at the University of Michigan, deeply interested in the intersection of sociology, economics, and technology.
+                I’m passionate about exploring how data-driven approaches can help us understand human behavior and societal trends,
+                especially in areas like <strong>migration</strong>, <strong>economic policy</strong>, and <strong>social systems</strong>.
+              </p>
+              <p>
+                I focus on building interactive data visualizations and simulation models that bridge the gap between raw data and actionable insights.
+                Currently, I'm developing an economic and politics simulation game that
+                uses real-world data and behavioral models to let players explore how policy decisions and 
+                <strong>social dynamics</strong> shape outcomes.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -70,7 +80,7 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <h5 className="font-medium text-slate-900 dark:text-white text-sm">Relevant Coursework:</h5>
                     <div className="flex flex-wrap gap-1.5">
@@ -108,7 +118,7 @@ export default function AboutPage() {
                       <Badge variant="secondary" className="text-xs">SQL</Badge>
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-medium text-slate-900 dark:text-white mb-2">Frameworks & Libraries</h4>
                     <div className="flex flex-wrap gap-1.5">
@@ -119,7 +129,7 @@ export default function AboutPage() {
                       <Badge variant="secondary" className="text-xs">Prisma</Badge>
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-medium text-slate-900 dark:text-white mb-2">Tools & Technologies</h4>
                     <div className="flex flex-wrap gap-1.5">
@@ -158,7 +168,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="text-center pt-0">
                 <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Interactive dashboards and visualizations for complex policy data analysis, 
+                  Interactive dashboards and visualizations for complex policy data analysis,
                   focusing on making data accessible to policymakers and researchers.
                 </p>
               </CardContent>
@@ -173,7 +183,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="text-center pt-0">
                 <p className="text-sm text-slate-600 dark:text-slate-300">
-                  High-performance simulation models for analyzing policy impacts on complex systems, 
+                  High-performance simulation models for analyzing policy impacts on complex systems,
                   with a focus on agent-based modeling and real-time scenario testing.
                 </p>
               </CardContent>
@@ -188,7 +198,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent className="text-center pt-0">
                 <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Applied analytics for policy research, combining statistical analysis with 
+                  Applied analytics for policy research, combining statistical analysis with
                   machine learning to understand human behavior and policy outcomes.
                 </p>
               </CardContent>

@@ -89,7 +89,7 @@ export default function ProjectsPage() {
     <>
       {/* Hero Section */}
       <section className="pt-20 pb-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
               Projects
@@ -104,7 +104,7 @@ export default function ProjectsPage() {
 
       {/* Projects Grid */}
       <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {projects.map((project) => (
               <Card key={project.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm overflow-hidden">
@@ -185,7 +185,7 @@ export default function ProjectsPage() {
 
       {/* Project Categories */}
       <section className="py-12 bg-white/50 dark:bg-slate-900/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
               Project Categories
