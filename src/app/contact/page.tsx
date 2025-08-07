@@ -9,7 +9,7 @@ export default function ContactPage() {
     <>
       {/* Hero Section */}
       <section className="pt-20 pb-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
               Get in Touch
@@ -24,7 +24,7 @@ export default function ContactPage() {
 
       {/* Contact Form & Info */}
       <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Contact Form */}
             <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
@@ -77,23 +77,7 @@ export default function ContactPage() {
                       placeholder="john@example.com"
                     />
                   </div>
-                  
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                      Subject
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="collaboration">Project Collaboration</option>
-                      <option value="research">Research Discussion</option>
-                      <option value="consulting">Consulting Opportunity</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+                
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
@@ -131,7 +115,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-medium text-slate-900 dark:text-white">Email</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">taemin@umich.edu</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">taeminkm@umich.edu</p>
                     </div>
                   </div>
                   
@@ -141,7 +125,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="font-medium text-slate-900 dark:text-white">Location</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-300">Ann Arbor, Michigan</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">Portland, Oregon</p>
                     </div>
                   </div>
                   
@@ -154,30 +138,27 @@ export default function ContactPage() {
                       <p className="text-sm text-slate-600 dark:text-slate-300">Available for new opportunities</p>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
 
-              <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-xl font-bold text-slate-900 dark:text-white">
-                    Social Links
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <Button variant="outline" className="w-full justify-start border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
-                      <Github className="mr-3 h-4 w-4" />
-                      GitHub Profile
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
-                      <Linkedin className="mr-3 h-4 w-4" />
-                      LinkedIn Profile
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
-                      <Mail className="mr-3 h-4 w-4" />
-                      Send Email
-                    </Button>
-                  </div>
+                <div className="flex items-center gap-3 pt-2">
+                  <a
+                    href="https://github.com/LuminescentBulb"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    <Github className="h-5 w-5 text-slate-700 dark:text-slate-300" />
+                  </a>
+                  <a
+                    href="http://linkedin.com/in/taemin-kim-010344235/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5 text-slate-700 dark:text-slate-300" />
+                  </a>
+                </div>
                 </CardContent>
               </Card>
             </div>
@@ -187,7 +168,7 @@ export default function ContactPage() {
 
       {/* What I'm Looking For */}
       <section className="py-12 bg-white/50 dark:bg-slate-900/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
               What I'm Looking For
@@ -199,7 +180,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-center">
                 <div className="mx-auto mb-3 p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
                   <Mail className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </div>
@@ -214,7 +195,7 @@ export default function ContactPage() {
             </Card>
 
             <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-center">
                 <div className="mx-auto mb-3 p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
                   <Clock className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                 </div>
@@ -229,7 +210,7 @@ export default function ContactPage() {
             </Card>
 
             <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
+              <CardHeader className="text-center">
                 <div className="mx-auto mb-3 p-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg">
                   <Send className="h-6 w-6 text-green-600 dark:text-green-400" />
                 </div>
@@ -243,36 +224,6 @@ export default function ContactPage() {
               </CardContent>
             </Card>
           </div>
-        </div>
-      </section>
-
-      {/* Response Time */}
-      <section className="py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-            <CardContent className="py-8">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
-                  Response Time
-                </h3>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                I typically respond to messages within 24-48 hours during weekdays. 
-                For urgent matters, please include "URGENT" in your subject line.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-500 dark:text-slate-400">
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  Weekdays: 9 AM - 6 PM EST
-                </span>
-                <span className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
-                  Response: 24-48 hours
-                </span>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </section>
     </>

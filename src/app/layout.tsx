@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { Header } from "@/components/header";
+import { FloatingMenu } from "@/components/floating-menu";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
@@ -34,8 +34,8 @@ export default function RootLayout({
           attribute="class"
         >
           <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-            <Header />
-            <main>
+            <FloatingMenu />
+            <main className="pt-20 md:pt-0">
               {children}
             </main>
             <Footer />

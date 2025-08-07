@@ -10,11 +10,11 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <section className="pt-20 pb-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-8">
               <Avatar className="h-24 w-24 ring-4 ring-white/50 shadow-lg">
-                <AvatarImage src="/avatar.jpg" alt="Taemin" />
+                <AvatarImage src="/avatar.png" alt="Taemin" />
                 <AvatarFallback className="text-2xl bg-gradient-to-r from-blue-500 to-purple-600 text-white">
                   T
                 </AvatarFallback>
@@ -31,41 +31,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Personal Story */}
-      <section className="py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">
-                My Story
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                I'm a data science major at the University of Michigan, passionate about building complex systems 
-                that bring data, policy, and human behavior into interactive environments. My work spans data 
-                visualization, simulation modeling, and applied analytics—each project rooted in a practical goal: 
-                turning raw data into insight or immersion.
-              </p>
-              
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                I work across full-stack development (React, Next.js, Prisma, PostgreSQL), simulation (C++), 
-                and statistical analysis (Python, pandas, scikit-learn), with a focus on realistic, 
-                policy-relevant systems.
-              </p>
-              
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                The EU Intra-Migration Dashboard targets policy researchers and academics, providing a clear 
-                visual of how population movement is consolidating wealth and deepening regional inequality.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* Education & Experience */}
       <section className="py-12 bg-white/50 dark:bg-slate-900/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Education */}
             <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
@@ -93,7 +61,7 @@ export default function AboutPage() {
                       <div className="flex items-center gap-4 mt-2 text-xs text-slate-500 dark:text-slate-400">
                         <span className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
-                          2021 - 2025
+                          2023 - 2027
                         </span>
                         <span className="flex items-center gap-1">
                           <MapPin className="h-3 w-3" />
@@ -170,7 +138,7 @@ export default function AboutPage() {
 
       {/* Research Interests */}
       <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
               Research Interests
@@ -225,34 +193,6 @@ export default function AboutPage() {
                 </p>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="py-12 bg-slate-50/50 dark:bg-slate-800/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">
-            Let's Work Together
-          </h2>
-          <p className="text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-            Interested in collaborating on data science projects, policy research, or building 
-            interactive systems? I'd love to hear from you.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button size="default" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
-              <Mail className="mr-2 h-4 w-4" />
-              Send Message
-            </Button>
-            <Button variant="outline" size="default" className="border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
-              <Linkedin className="mr-2 h-4 w-4" />
-              Connect on LinkedIn
-            </Button>
-            <Button variant="outline" size="default" className="border-slate-300 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800">
-              <Github className="mr-2 h-4 w-4" />
-              View GitHub
-            </Button>
           </div>
         </div>
       </section>
