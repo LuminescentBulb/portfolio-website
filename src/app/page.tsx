@@ -4,10 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MapPin, Github, Linkedin, Mail, ExternalLink, Database, Code, BarChart3, Globe, TrendingUp, Users, ArrowRight } from "lucide-react";
+import { MapPin, Github, Linkedin, Mail, ExternalLink, Database, Code, BarChart3, Globe, TrendingUp, Users, ArrowRight, Calendar } from "lucide-react";
 import Link from "next/link";
+import { getRecentBlogPosts } from "@/lib/blog";
 
-export default function Home() {
+export default async function Home() {
+  const recentPosts = await getRecentBlogPosts(3);
+  
   return (
     <>
       {/* Hero Section */}
@@ -15,7 +18,7 @@ export default function Home() {
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-6">
-              <Avatar className="h-16 w-16 ring-2 ring-white/30 shadow-sm">
+              <Avatar className="h-48 w-48 ring-2 ring-white/30 shadow-sm">
                 <AvatarImage src="/avatar.png" alt="Taemin" />
                 <AvatarFallback className="text-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white">
                   T
@@ -103,245 +106,88 @@ export default function Home() {
               Built with React, Deck.gl, MapLibre, and Eurostat data
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
+              <a 
+                href="https://eu-dashboard.stellux.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all"
+              >
                 <ExternalLink className="mr-2 h-3 w-3" />
                 View Full Project
-              </Button>
-              <Button variant="outline" size="sm">
+              </a>
+              <a 
+                href="https://github.com/LuminescentBulb/intra-eu-migration"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
                 <Github className="mr-2 h-3 w-3" />
                 Source Code
-              </Button>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Current Thoughts & Blog Section */}
       <section className="py-12 bg-slate-50/30 dark:bg-slate-800/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-              Featured Projects
+              Recent Thoughts
             </h2>
-            <p className="text-slate-600 dark:text-slate-300">
-              Interactive data visualization and policy research applications
-            </p>
           </div>
 
-          <Tabs defaultValue="migration" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-3 mb-6 bg-white/50 dark:bg-slate-800/50">
-              <TabsTrigger value="migration" className="text-xs">Migration Dashboard</TabsTrigger>
-              <TabsTrigger value="simulation" className="text-xs">Simulation Models</TabsTrigger>
-              <TabsTrigger value="analytics" className="text-xs">Data Analytics</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="migration" className="space-y-4">
-              <Card className="max-w-4xl mx-auto border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="p-5 lg:p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="default" className="bg-blue-500 text-white text-xs">Featured</Badge>
-                      <Badge variant="outline" className="text-xs">Data Visualization</Badge>
-                      <Badge variant="outline" className="text-xs">Policy Research</Badge>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                      EU Intra-Migration Dashboard
-                    </h3>
-
-                    <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                      An interactive web dashboard visualizing intra-European migration flows since EU expansion.
-                      This project integrates performant mapping, demographic overlays, and policy-relevant analytics.
-                    </p>
-
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Deck.gl and MapLibre</strong> for performant, animated migration arcs across custom maps
-                        </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {recentPosts.length > 0 ? (
+              recentPosts.map((post, index) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
+                  <Card className={`border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm hover:shadow-md transition-all duration-200 cursor-pointer ${index === 0 ? 'col-span-full lg:col-span-2' : ''}`}>
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="p-1.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md">
+                          <Calendar className="h-5 w-5 text-white" />
+                        </div>
+                        <div>
+                          <CardTitle className={`font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${index === 0 ? 'text-lg' : 'text-base'}`}>
+                            {post.title}
+                          </CardTitle>
+                          <CardDescription className="text-slate-600 dark:text-slate-300">
+                            {post.date} • {post.readTime} min read
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>GeoJSON integration</strong> with tooltips, country selectors, and demographic overlays
-                        </p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Eurostat & World Bank data</strong> analyzing migration by year, net flows, GDP, and dependency ratios
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white">
-                        <ExternalLink className="mr-2 h-3 w-3" />
-                        View Project
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Github className="mr-2 h-3 w-3" />
-                        Source Code
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-5 lg:p-6 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                        <Globe className="h-10 w-10 text-white" />
-                      </div>
-                      <h4 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
-                        Interactive Migration Visualization
-                      </h4>
-                      <p className="text-slate-600 dark:text-slate-300 text-xs">
-                        Real-time data visualization for policy researchers and academics
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
+                        {post.excerpt}
                       </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </TabsContent>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))
+            ) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-slate-600 dark:text-slate-300">
+                  No blog posts yet. Check back soon!
+                </p>
+              </div>
+            )}
+          </div>
 
-            <TabsContent value="simulation" className="space-y-4">
-              <Card className="max-w-4xl mx-auto border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="p-5 lg:p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="default" className="bg-purple-500 text-white text-xs">In Development</Badge>
-                      <Badge variant="outline" className="text-xs">C++</Badge>
-                      <Badge variant="outline" className="text-xs">Simulation</Badge>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                      Policy Impact Simulation Models
-                    </h3>
-
-                    <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                      High-performance simulation models for analyzing policy impacts on complex systems.
-                      Built with C++ for computational efficiency and real-time policy scenario testing.
-                    </p>
-
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Agent-based modeling</strong> for complex policy scenario analysis
-                        </p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Real-time simulation</strong> with interactive parameter adjustment
-                        </p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Policy impact visualization</strong> with statistical analysis and reporting
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      <Button size="sm" className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white">
-                        <ExternalLink className="mr-2 h-3 w-3" />
-                        View Demo
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Github className="mr-2 h-3 w-3" />
-                        Source Code
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 p-5 lg:p-6 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-blue-600 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                        <TrendingUp className="h-10 w-10 text-white" />
-                      </div>
-                      <h4 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
-                        Policy Impact Analysis
-                      </h4>
-                      <p className="text-slate-600 dark:text-slate-300 text-xs">
-                        High-performance simulation for policy decision support
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="analytics" className="space-y-4">
-              <Card className="max-w-4xl mx-auto border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="p-5 lg:p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="default" className="bg-green-500 text-white text-xs">Completed</Badge>
-                      <Badge variant="outline" className="text-xs">Python</Badge>
-                      <Badge variant="outline" className="text-xs">Machine Learning</Badge>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
-                      Behavioral Analytics Platform
-                    </h3>
-
-                    <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
-                      Advanced analytics platform for understanding human behavior patterns in policy contexts.
-                      Combines statistical analysis with machine learning for predictive insights.
-                    </p>
-
-                    <div className="space-y-2 mb-4">
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-green-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Statistical modeling</strong> with pandas and scikit-learn for pattern recognition
-                        </p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Predictive analytics</strong> for policy outcome forecasting
-                        </p>
-                      </div>
-                      <div className="flex items-start gap-2">
-                        <div className="w-1 h-1 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                        <p className="text-xs text-slate-600 dark:text-slate-300">
-                          <strong>Interactive dashboards</strong> for real-time data exploration and visualization
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      <Button size="sm" className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white">
-                        <ExternalLink className="mr-2 h-3 w-3" />
-                        View Platform
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Github className="mr-2 h-3 w-3" />
-                        Source Code
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 p-5 lg:p-6 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                        <Users className="h-10 w-10 text-white" />
-                      </div>
-                      <h4 className="text-base font-semibold text-slate-900 dark:text-white mb-1">
-                        Behavioral Analytics
-                      </h4>
-                      <p className="text-slate-600 dark:text-slate-300 text-xs">
-                        Machine learning insights for policy and human behavior
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </TabsContent>
-          </Tabs>
+          <div className="mt-8 text-center">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-slate-200 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+            >
+              <Link href="/blog">
+                <ArrowRight className="mr-2 h-4 w-4" />
+                View All Thoughts
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </>

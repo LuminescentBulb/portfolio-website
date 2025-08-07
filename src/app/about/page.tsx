@@ -25,16 +25,16 @@ export default function AboutPage() {
             </h1>
             <div className="text-base text-left text-slate-600 dark:text-slate-300 max-w-3xl mx-auto space-y-4">
               <p>
-                Hi, my name is <strong>Taemin Kim</strong>.
-                I'm a Data Science student at the University of Michigan, deeply interested in the intersection of sociology, economics, and technology.
+                Hi, my name is <strong>Taemin Kim</strong>. I'm from Portland, Oregon, and I am currently
+                a Data Science student at the University of Michigan, deeply interested in the intersection of sociology, economics, and technology.
                 I’m passionate about exploring how data-driven approaches can help us understand human behavior and societal trends,
                 especially in areas like <strong>migration</strong>, <strong>economic policy</strong>, and <strong>social systems</strong>.
               </p>
               <p>
                 I focus on building interactive data visualizations and simulation models that bridge the gap between raw data and actionable insights.
                 Currently, I'm developing an economic and politics simulation game that
-                uses real-world data and behavioral models to let players explore how policy decisions and 
-                <strong>social dynamics</strong> shape outcomes.
+                uses real-world data and behavioral models to let players explore how policy decisions and
+                <strong> social dynamics</strong> shape outcomes.
               </p>
             </div>
           </div>
@@ -86,9 +86,11 @@ export default function AboutPage() {
                     <div className="flex flex-wrap gap-1.5">
                       <Badge variant="secondary" className="text-xs">Data Structures & Algorithms</Badge>
                       <Badge variant="secondary" className="text-xs">Machine Learning</Badge>
-                      <Badge variant="secondary" className="text-xs">Statistical Analysis</Badge>
-                      <Badge variant="secondary" className="text-xs">Database Systems</Badge>
-                      <Badge variant="secondary" className="text-xs">Policy Analysis</Badge>
+                      <Badge variant="secondary" className="text-xs">Probabilities & Regression Analysis</Badge>
+                      <Badge variant="secondary" className="text-xs">Multivariable Calculus and Differential Equations</Badge>
+                      <Badge variant="secondary" className="text-xs">Linear Algebra</Badge>
+                      <Badge variant="secondary" className="text-xs">Web Systems</Badge>
+                      <Badge variant="secondary" className="text-xs">Computer Organization</Badge>
                     </div>
                   </div>
                 </div>
@@ -115,6 +117,8 @@ export default function AboutPage() {
                       <Badge variant="secondary" className="text-xs">Python</Badge>
                       <Badge variant="secondary" className="text-xs">JavaScript/TypeScript</Badge>
                       <Badge variant="secondary" className="text-xs">C++</Badge>
+                      <Badge variant="secondary" className="text-xs">C</Badge>
+                      <Badge variant="secondary" className="text-xs">R</Badge>
                       <Badge variant="secondary" className="text-xs">SQL</Badge>
                     </div>
                   </div>
@@ -126,7 +130,7 @@ export default function AboutPage() {
                       <Badge variant="secondary" className="text-xs">Next.js</Badge>
                       <Badge variant="secondary" className="text-xs">pandas</Badge>
                       <Badge variant="secondary" className="text-xs">scikit-learn</Badge>
-                      <Badge variant="secondary" className="text-xs">Prisma</Badge>
+                      <Badge variant="secondary" className="text-xs">PyTorch</Badge>
                     </div>
                   </div>
 
@@ -137,6 +141,7 @@ export default function AboutPage() {
                       <Badge variant="secondary" className="text-xs">Docker</Badge>
                       <Badge variant="secondary" className="text-xs">Git</Badge>
                       <Badge variant="secondary" className="text-xs">AWS</Badge>
+                      <Badge variant="secondary" className="text-xs">Prisma</Badge>
                     </div>
                   </div>
                 </div>

@@ -1,8 +1,14 @@
+/* Import KaTeX stylesheet to properly hide the MathML fallback */
+@import "katex/dist/katex.min.css";
+
+/* Tailwind and animation utilities */
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Custom dark variant for Tailwind */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Inline theme definition */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -43,6 +49,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* Light theme variables */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -78,6 +85,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* Dark theme overrides */
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -112,11 +120,112 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Base layer: global resets and KaTeX MathML hiding */
 @layer base {
+  /* Always hide the MathML fallback so you only see one rendered formula */
+  .katex .katex-mathml {
+    position: absolute !important;
+    clip: rect(1px,1px,1px,1px) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+  }
+  /* Ensure the visual HTML output remains visible */
+  .katex .katex-html {
+    display: inline-block !important;
+  }
+
+  /* Your border and outline theme */
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Components layer: prose styling, math spacing, KaTeX dark tweaks */
+@layer components {
+  .prose {
+    @apply text-foreground;
+  }
+  .prose h1 {
+    @apply text-3xl font-bold mb-6 mt-8;
+  }
+  .prose h2 {
+    @apply text-2xl font-semibold mb-4 mt-6;
+  }
+  .prose h3 {
+    @apply text-xl font-semibold mb-3 mt-5;
+  }
+  .prose h4 {
+    @apply text-lg font-semibold mb-2 mt-4;
+  }
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+  .prose ul {
+    @apply mb-4 list-disc list-inside;
+  }
+  .prose ol {
+    @apply mb-4 list-decimal list-inside;
+  }
+  .prose li {
+    @apply mb-1;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-muted-foreground pl-4 italic my-4;
+  }
+  .prose code {
+    @apply bg-muted px-1 py-0.5 rounded text-sm font-mono;
+  }
+  .prose pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+  }
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+  .prose a {
+    @apply text-primary hover:underline;
+  }
+  .prose strong {
+    @apply font-semibold;
+  }
+  .prose em {
+    @apply italic;
+  }
+  .prose hr {
+    @apply border-border my-8;
+  }
+  .prose table {
+    @apply w-full border-collapse mb-4;
+  }
+  .prose th {
+    @apply border border-border px-4 py-2 text-left font-semibold bg-muted;
+  }
+  .prose td {
+    @apply border border-border px-4 py-2;
+  }
+
+  /* Math block spacing */
+  .prose .math {
+    @apply my-4;
+  }
+  .prose .math-inline {
+    @apply inline;
+  }
+
+  /* KaTeX dark mode color overrides */
+  .dark .katex {
+    color: #e2e8f0;
+  }
+  .dark .katex .mord {
+    color: #e2e8f0;
+  }
+  .dark .katex .mbin,
+  .dark .katex .mrel {
+    color: #e2e8f0;
   }
 }

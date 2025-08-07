@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { FloatingMenu } from "@/components/floating-menu";
 import { Footer } from "@/components/footer";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Taemin - Data Science Portfolio",
@@ -29,6 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+          integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+Wdt4aHFOgtdlqZqX1YJ0e"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="antialiased">
         <ThemeProvider
           attribute="class"

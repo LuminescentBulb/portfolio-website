@@ -6,11 +6,12 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/customui/lightdarktoggle";
-import { Home, FolderOpen, User, Mail, GripVertical, Menu, X } from "lucide-react";
+import { Home, FolderOpen, User, Mail, GripVertical, Menu, X, BookOpen } from "lucide-react";
 
 const navigation = [
   { name: "Home", href: "/", icon: Home },
   { name: "Projects", href: "/projects", icon: FolderOpen },
+  { name: "Blog", href: "/blog", icon: BookOpen },
   { name: "About", href: "/about", icon: User },
   { name: "Contact", href: "/contact", icon: Mail },
 ];
@@ -179,7 +180,7 @@ export function FloatingMenu() {
                     isMobile 
                       ? "h-10 w-10 rounded-full" 
                       : "w-full justify-start h-10 px-3 rounded-xl",
-                    pathname === item.href
+                    (pathname === item.href || (item.href === "/blog" && pathname.startsWith("/blog")))
                       ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
                   )}

@@ -23,64 +23,71 @@ const projects = [
     icon: Globe,
     color: "from-blue-500 to-purple-600",
     bgColor: "from-blue-50 to-purple-50",
-    darkBgColor: "from-blue-900/20 to-purple-900/20"
+    darkBgColor: "from-blue-900/20 to-purple-900/20",
+    viewable: true,
+    projectUrl: "https://eu-dashboard.stellux.org",
+    sourceUrl: "https://github.com/LuminescentBulb/intra-eu-migration"
   },
   {
-    id: "simulation",
-    title: "Policy Impact Simulation Models",
-    description: "High-performance simulation models for analyzing policy impacts on complex systems.",
-    status: "In Development",
-    statusColor: "bg-purple-500",
-    category: "Simulation",
-    technologies: ["C++", "OpenGL", "CUDA", "Python", "NumPy"],
-    features: [
-      "Agent-based modeling for complex policy scenarios",
-      "Real-time simulation with interactive parameters",
-      "Policy impact visualization and reporting",
-      "High-performance computational modeling"
-    ],
-    icon: TrendingUp,
-    color: "from-purple-500 to-blue-600",
-    bgColor: "from-purple-50 to-blue-50",
-    darkBgColor: "from-purple-900/20 to-blue-900/20"
-  },
-  {
-    id: "analytics",
-    title: "Behavioral Analytics Platform",
-    description: "Advanced analytics platform for understanding human behavior patterns in policy contexts.",
+    id: "dog-breed",
+    title: "Dog Breed Classifier",
+    description: "Built a deep learning pipeline in PyTorch to classify Golden Retrievers vs. Collies from a 10-class image dataset.",
     status: "Completed",
     statusColor: "bg-green-500",
     category: "Machine Learning",
-    technologies: ["Python", "pandas", "scikit-learn", "Plotly", "FastAPI"],
+    technologies: ["PyTorch", "Vision Transformers", "CNNs", "Transfer Learning", "Python"],
     features: [
-      "Statistical modeling with pattern recognition",
-      "Predictive analytics for policy outcomes",
-      "Interactive dashboards for data exploration",
-      "Real-time behavioral pattern analysis"
+      "Achieved 0.95+ accuracy and 0.97 AUROC using transfer learning",
+      "Implemented Vision Transformer (ViT) architecture from scratch",
+      "Designed custom CNN with dropout and early stopping"
     ],
-    icon: Users,
+    icon: BarChart3,
     color: "from-green-500 to-blue-600",
     bgColor: "from-green-50 to-blue-50",
-    darkBgColor: "from-green-900/20 to-blue-900/20"
+    darkBgColor: "from-green-900/20 to-blue-900/20",
+    viewable: false,
+    sourceUrl: null
   },
   {
-    id: "database",
-    title: "Policy Database System",
-    description: "Comprehensive database system for policy research and data management.",
+    id: "political-simulator",
+    title: "Online Political Simulator",
+    description: "Developing a multiplayer political strategy game simulating U.S. elections, parties, and governance across 50 states.",
+    status: "In Development",
+    statusColor: "bg-purple-500",
+    category: "Full-Stack Web",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Prisma", "PostgreSQL"],
+    features: [
+      "Turn-based system with dynamic influence and finance mechanics",
+      "Backend schema and REST API with custom authentication",
+      "Game logic for primaries, elections, and legislative proposals"
+    ],
+    icon: Users2,
+    color: "from-purple-500 to-blue-600",
+    bgColor: "from-purple-50 to-blue-50",
+    darkBgColor: "from-purple-900/20 to-blue-900/20",
+    viewable: false,
+    projectUrl: "https://union.stellux.org",
+    sourceUrl: null
+  },
+  {
+    id: "dishes-data",
+    title: "Dishes to Data – Recipe Analysis",
+    description: "Conducted an analysis of over 80,000 recipes and ratings from Food.com to investigate the relationship between nutritional values and user ratings.",
     status: "Completed",
     statusColor: "bg-orange-500",
-    category: "Database",
-    technologies: ["PostgreSQL", "Prisma", "Node.js", "TypeScript", "Docker"],
+    category: "Data Analysis",
+    technologies: ["Python", "pandas", "NumPy", "Plotly", "scikit-learn"],
     features: [
-      "Structured policy data management",
-      "Advanced querying and filtering",
-      "Data validation and integrity checks",
-      "API for external integrations"
+      "Cleaned and merged multiple datasets with exploratory analysis",
+      "Built predictive model to determine nutritional factors",
+      "Created visualizations to uncover trends in ratings and nutrition"
     ],
-    icon: DatabaseIcon,
+    icon: Database,
     color: "from-orange-500 to-red-600",
     bgColor: "from-orange-50 to-red-50",
-    darkBgColor: "from-orange-900/20 to-red-900/20"
+    darkBgColor: "from-orange-900/20 to-red-900/20",
+    viewable: false,
+    sourceUrl: "https://github.com/LuminescentBulb/dishes-to-data"
   }
 ];
 
@@ -105,11 +112,11 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
             {projects.map((project) => (
-              <Card key={project.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                  <div className="p-6 lg:p-8">
+              <Card key={project.id} className="border-0 py-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm overflow-hidden h-full flex flex-col">
+                <div className="grid grid-cols-1 lg:grid-cols-3 flex-1">
+                  <div className="p-6 lg:p-6 xl:p-8 lg:col-span-2 flex flex-col">
                     <div className="flex items-center gap-2 mb-4">
                       <Badge variant="default" className={`${project.statusColor} text-white text-xs`}>
                         {project.status}
@@ -151,22 +158,36 @@ export default function ProjectsPage() {
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
-                      <Button size="sm" className={`bg-gradient-to-r ${project.color} hover:opacity-90 text-white`}>
-                        <ExternalLink className="mr-2 h-3 w-3" />
-                        View Project
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Github className="mr-2 h-3 w-3" />
-                        Source
-                      </Button>
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.viewable && project.projectUrl && (
+                        <a 
+                          href={project.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md bg-gradient-to-r ${project.color} hover:opacity-90 text-white transition-opacity`}
+                        >
+                          <ExternalLink className="mr-2 h-3 w-3" />
+                          View Project
+                        </a>
+                      )}
+                      {project.sourceUrl && (
+                        <a 
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+                        >
+                          <Github className="mr-2 h-3 w-3" />
+                          Source
+                        </a>
+                      )}
                     </div>
                   </div>
                   
-                  <div className={`bg-gradient-to-br ${project.bgColor} dark:${project.darkBgColor} p-6 lg:p-8 flex items-center justify-center`}>
+                  <div className={`bg-gradient-to-br ${project.bgColor} dark:${project.darkBgColor} p-6 lg:p-6 xl:p-8 flex items-center justify-center`}>
                     <div className="text-center">
-                      <div className={`w-20 h-20 bg-gradient-to-br ${project.color} rounded-lg flex items-center justify-center mb-4 mx-auto`}>
-                        <project.icon className="h-10 w-10 text-white" />
+                      <div className={`w-16 h-16 xl:w-20 xl:h-20 bg-gradient-to-br ${project.color} rounded-lg flex items-center justify-center mb-4 mx-auto`}>
+                        <project.icon className="h-8 w-8 xl:h-10 xl:w-10 text-white" />
                       </div>
                       <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">
                         {project.category}
@@ -195,60 +216,79 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm h-full flex flex-col">
+              <CardHeader className="text-center">
                 <div className="mx-auto mb-3 p-2.5 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
                   <Globe className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                 </div>
-                <CardTitle className="text-lg">Data Visualization</CardTitle>
+                <CardTitle className="text-lg min-h-[3.5rem] flex items-center justify-center">Data Visualization</CardTitle>
               </CardHeader>
-              <CardContent className="text-center pt-0">
-                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+              <CardContent className="text-center pt-0 flex-1 flex flex-col">
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 flex-1">
                   Interactive dashboards and visualizations for complex data analysis
                 </p>
                 <div className="flex flex-wrap justify-center gap-1.5">
                   <Badge variant="secondary" className="text-xs">React</Badge>
-                  <Badge variant="secondary" className="text-xs">D3.js</Badge>
+                  <Badge variant="secondary" className="text-xs">Deck.gl</Badge>
                   <Badge variant="secondary" className="text-xs">MapLibre</Badge>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-3 p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm h-full flex flex-col">
+              <CardHeader className="text-center flex-shrink-0">
+                <div className="mx-auto mb-3 p-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg">
+                  <BarChart3 className="h-6 w-6 text-green-600 dark:text-green-400" />
                 </div>
-                <CardTitle className="text-lg">Simulation & Modeling</CardTitle>
+                <CardTitle className="text-lg min-h-[3.5rem] flex items-center justify-center">Machine Learning</CardTitle>
               </CardHeader>
-              <CardContent className="text-center pt-0">
-                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
-                  High-performance simulation models for policy impact analysis
+              <CardContent className="text-center pt-0 flex-1 flex flex-col">
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 flex-1">
+                  Deep learning models and computer vision applications
                 </p>
                 <div className="flex flex-wrap justify-center gap-1.5">
-                  <Badge variant="secondary" className="text-xs">C++</Badge>
-                  <Badge variant="secondary" className="text-xs">OpenGL</Badge>
-                  <Badge variant="secondary" className="text-xs">CUDA</Badge>
+                  <Badge variant="secondary" className="text-xs">PyTorch</Badge>
+                  <Badge variant="secondary" className="text-xs">Vision Transformers</Badge>
+                  <Badge variant="secondary" className="text-xs">CNNs</Badge>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
-              <CardHeader className="text-center pb-4">
-                <div className="mx-auto mb-3 p-2.5 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                  <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm h-full flex flex-col">
+              <CardHeader className="text-center flex-shrink-0">
+                <div className="mx-auto mb-3 p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                  <Users2 className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                 </div>
-                <CardTitle className="text-lg">Machine Learning</CardTitle>
+                <CardTitle className="text-lg min-h-[3.5rem] flex items-center justify-center">Full-Stack Web</CardTitle>
               </CardHeader>
-              <CardContent className="text-center pt-0">
-                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
-                  Predictive analytics and behavioral pattern recognition
+              <CardContent className="text-center pt-0 flex-1 flex flex-col">
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 flex-1">
+                  Modern web applications with interactive features and real-time updates
+                </p>
+                <div className="flex flex-wrap justify-center gap-1.5">
+                  <Badge variant="secondary" className="text-xs">Next.js</Badge>
+                  <Badge variant="secondary" className="text-xs">React</Badge>
+                  <Badge variant="secondary" className="text-xs">PostgreSQL</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-0 shadow-sm hover:shadow-md transition-all duration-200 bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm h-full flex flex-col">
+              <CardHeader className="text-center flex-shrink-0">
+                <div className="mx-auto mb-3 p-2.5 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                  <Database className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                </div>
+                <CardTitle className="text-lg min-h-[3.5rem] flex items-center justify-center">Data Analysis</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center pt-0 flex-1 flex flex-col">
+                <p className="text-sm text-slate-600 dark:text-slate-300 mb-4 flex-1">
+                  Statistical analysis and predictive modeling for data-driven insights
                 </p>
                 <div className="flex flex-wrap justify-center gap-1.5">
                   <Badge variant="secondary" className="text-xs">Python</Badge>
+                  <Badge variant="secondary" className="text-xs">pandas</Badge>
                   <Badge variant="secondary" className="text-xs">scikit-learn</Badge>
-                  <Badge variant="secondary" className="text-xs">TensorFlow</Badge>
                 </div>
               </CardContent>
             </Card>
