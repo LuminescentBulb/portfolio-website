@@ -7,7 +7,7 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
 
   return (
-    <div className="min-h-screen pt-16 pb-12">
+    <div className="min-h-screen pt-20 pb-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -22,9 +22,9 @@ export default async function BlogPage() {
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
-              <Card className="border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm hover:shadow-md transition-all duration-200 cursor-pointer">
-                <CardHeader className="pb-3">
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="block h-full">
+              <Card className="h-full border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col">
+                <CardHeader className="pb-3 flex-shrink-0">
                   <div className="flex items-center gap-3">
                     <div className="p-1.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md">
                       <Calendar className="h-5 w-5 text-white" />
@@ -39,8 +39,8 @@ export default async function BlogPage() {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
+                <CardContent className="flex-1 flex flex-col">
+                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm flex-1">
                     {post.excerpt}
                   </p>
                 </CardContent>

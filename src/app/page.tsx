@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 pb-12">
+      <section className="relative overflow-hidden pt-20 pb-12">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-6">
@@ -138,9 +138,9 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentPosts.length > 0 ? (
               recentPosts.map((post, index) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
-                  <Card className={`border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm hover:shadow-md transition-all duration-200 cursor-pointer ${index === 0 ? 'col-span-full lg:col-span-2' : ''}`}>
-                    <CardHeader className="pb-3">
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="block h-full">
+                  <Card className={`h-full border-0 shadow-sm overflow-hidden bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col ${index === 0 ? 'col-span-full lg:col-span-2' : ''}`}>
+                    <CardHeader className="pb-3 flex-shrink-0">
                       <div className="flex items-center gap-3">
                         <div className="p-1.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md">
                           <Calendar className="h-5 w-5 text-white" />
@@ -155,8 +155,8 @@ export default async function Home() {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed text-sm">
+                    <CardContent className="flex-1 flex flex-col">
+                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm flex-1">
                         {post.excerpt}
                       </p>
                     </CardContent>

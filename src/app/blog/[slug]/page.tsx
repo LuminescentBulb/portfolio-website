@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { BlogContent } from "@/components/blog-content";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -77,10 +78,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             {/* Article Content */}
-            <div 
-              className="prose prose-slate dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <BlogContent content={post.content} />
           </CardContent>
         </Card>
       </div>

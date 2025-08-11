@@ -7,6 +7,8 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
+import rehypeExternalLinks from 'rehype-external-links';
 import rehypeStringify from 'rehype-stringify';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
@@ -71,18 +73,25 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Use unified to convert markdown into HTML string with math support
+    // Use unified to convert markdown into HTML string with math support, images, and iframes
     const processedContent = await unified()
       .use(remarkParse)
       .use(remarkGfm)
       .use(remarkMath)
-      .use(remarkRehype)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeRaw)
       .use(rehypeKatex, {
         strict: false,
         throwOnError: false,
         errorColor: '#cc0000'
       })
-      .use(rehypeStringify)
+      .use(rehypeExternalLinks, {
+        target: '_blank',
+        rel: ['noopener', 'noreferrer']
+      })
+      .use(rehypeStringify, {
+        allowDangerousHtml: true
+      })
       .process(content);
     const contentHtml = processedContent.toString();
 

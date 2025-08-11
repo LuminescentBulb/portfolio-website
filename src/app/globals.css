@@ -228,4 +228,60 @@
   .dark .katex .mrel {
     color: #e2e8f0;
   }
+
+  /* Enhanced image and iframe styling */
+  .prose img {
+    @apply rounded-lg shadow-md max-w-full h-auto transition-all duration-300;
+    @apply hover:shadow-lg hover:scale-[1.02] cursor-pointer;
+  }
+  
+  .prose img:hover {
+    @apply transform transition-transform duration-300;
+  }
+  
+  .prose iframe {
+    @apply rounded-lg shadow-md max-w-full border-0;
+    @apply transition-all duration-300;
+  }
+  
+  .prose iframe:hover {
+    @apply shadow-lg;
+  }
+  
+  /* Responsive iframe containers */
+  .prose .iframe-container {
+    @apply relative w-full overflow-hidden rounded-lg;
+    @apply aspect-video mb-6;
+  }
+  
+  .prose .iframe-container iframe {
+    @apply absolute top-0 left-0 w-full h-full;
+    @apply shadow-none hover:shadow-none;
+  }
+  
+  /* Image captions */
+  .prose .image-caption {
+    @apply text-center text-sm text-muted-foreground mt-2 mb-6;
+    @apply italic;
+  }
+  
+  /* Gallery layout for multiple images */
+  .prose .image-gallery {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6;
+  }
+  
+  .prose .image-gallery img {
+    @apply w-full h-48 object-cover;
+  }
+  
+  /* Code blocks with images */
+  .prose pre + img {
+    @apply mt-4;
+  }
+  
+  /* Tables with images */
+  .prose table img {
+    @apply max-w-20 h-auto shadow-sm;
+    @apply hover:shadow-md hover:scale-105;
+  }
 }
