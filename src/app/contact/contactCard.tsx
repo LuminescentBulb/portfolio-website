@@ -20,6 +20,7 @@ export default function ContactCard() {
         else {
             alert('Failed to send email');
         }
+        setIsSubmitting(false);
     };
     
     return (
