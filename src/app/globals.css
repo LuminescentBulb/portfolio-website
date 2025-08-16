@@ -167,13 +167,13 @@
     @apply mb-4 leading-relaxed;
   }
   .prose ul {
-    @apply mb-4 list-disc list-inside;
+    @apply mb-4 list-disc list-outside ml-6;
   }
   .prose ol {
-    @apply mb-4 list-decimal list-inside;
+    @apply mb-4 list-decimal list-outside ml-6;
   }
   .prose li {
-    @apply mb-1;
+    @apply mb-2 leading-relaxed;
   }
   .prose blockquote {
     @apply border-l-4 border-muted-foreground pl-4 italic my-4;
