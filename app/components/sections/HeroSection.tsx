@@ -1,5 +1,5 @@
 import { ChevronDown, Mail, ArrowRight } from "lucide-react";
-import {SiGithub} from "@icons-pack/react-simple-icons";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import { FaLinkedin } from "react-icons/fa";
 
 export default function SplitHeroSection() {
@@ -8,7 +8,7 @@ export default function SplitHeroSection() {
     };
 
     return (
-        <section id="hero" className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
+        <section id="hero" className="relative min-h-screen w-full overflow-hidden py-20">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 min-h-screen">
                     {/* Left Side - About Me */}
@@ -31,14 +31,10 @@ export default function SplitHeroSection() {
 
                             <div className="space-y-4 text-slate-300 leading-relaxed max-w-xl">
                                 <p>
-                                    Building <strong className="text-white">interactive systems</strong> that bridge
-                                    data, policy, and human behavior. Passionate about exploring the intersection
-                                    of sociology, economics, and technology.
-                                </p>
-                                <p>
-                                    Focused on <strong className="text-white">migration patterns</strong>,
-                                    <strong className="text-white"> economic policy</strong>, and
-                                    <strong className="text-white"> social systems</strong> through data-driven approaches.
+                                    Hi, I'm a student at the University of Michigan with a strong interest in
+                                    building <strong className="text-white">interactive systems</strong> that simulate
+                                    society and human behavior! Passionate about exploring the intersection
+                                    of sociology and technology.
                                 </p>
                             </div>
 
@@ -69,7 +65,7 @@ export default function SplitHeroSection() {
                     {/* Right Side - EU Dashboard Embed */}
                     <div className="relative flex items-center justify-center p-8 lg:p-12">
                         {/* Decorative Background */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 rounded-3xl blur-3xl" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/35 to-yellow-900/35 rounded-2xl blur-2xl" />
 
                         {/* Dashboard Container */}
                         <div className="relative w-full h-full min-h-[500px] lg:min-h-[700px] bg-slate-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
@@ -119,6 +115,7 @@ export default function SplitHeroSection() {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

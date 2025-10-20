@@ -1,6 +1,8 @@
 // routes/home.tsx
 import type { Route } from "./+types/home";
 import HeroSection from "../components/sections/HeroSection";
+import WeatherBackground from "~/components/sections/background";
+import ProjectsSection from "~/components/sections/ProjectSection";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -18,8 +20,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
     return (
-        <>
+        <WeatherBackground>
             <HeroSection />
-        </>
+            <ProjectsSection />
+        </WeatherBackground>
     );
 }

@@ -13,3 +13,79 @@ body {
     color-scheme: dark;
   }
 }
+
+/* Weather animations */
+@keyframes lightning {
+    0%, 90%, 100% {
+        opacity: 0;
+    }
+    91% {
+        opacity: 0.6;
+    }
+    92% {
+        opacity: 0;
+    }
+    93% {
+        opacity: 0.8;
+    }
+    94% {
+        opacity: 0;
+    }
+}
+
+.animate-lightning {
+    animation: lightning 8s ease-in-out infinite;
+}
+
+/* Projects Section Animations */
+
+/* Header fade-in animation */
+@keyframes project-header-fade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-header-animate {
+    animation: project-header-fade 1s ease-out forwards;
+}
+
+/* Project visibility states */
+.project-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-hidden-left {
+    opacity: 0;
+    transform: translateX(-8rem);
+}
+
+.project-hidden-right {
+    opacity: 0;
+    transform: translateX(8rem);
+}
+
+/* Icon rotation on hover */
+.project-icon-rotate {
+    transition: transform 0.3s ease;
+}
+
+.group:hover .project-icon-rotate {
+    transform: rotate(12deg);
+}
+
+/* Arrow slide animation */
+.project-arrow-slide {
+    transition: transform 0.3s ease;
+}
+
+.group:hover .project-arrow-slide,
+.group\/btn:hover .project-arrow-slide {
+    transform: translateX(0.25rem);
+}
