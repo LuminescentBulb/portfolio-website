@@ -14,6 +14,7 @@ export default function ProjectsSection() {
             image: "https://cdn.portfolio.stellux.org/portfolio/projects/EU.png",
             type: "image",
             tags: ["React", "Deck.gl", "MapLibre", "TypeScript", "Python", "Pandas"],
+            status: "Completed/In Development",
             liveUrl: "https://eu-dashboard.stellux.org",
             githubUrl: "https://github.com/LuminescentBulb/intra-eu-migration",
             featured: true,
@@ -60,7 +61,7 @@ export default function ProjectsSection() {
         {
             id: 5,
             title: "Dishes to Data",
-            description: "Statistical analysis of 80,000+ Food.com recipes examining how nutritional content affects ratings. Implemented ETL pipeline and missingness analysis",
+            description: "Statistical analysis of 80,000+ Food.com recipes examining how nutritional content affects ratings. Implemented ETL pipeline and missingness analysis.",
             image: "https://cdn.portfolio.stellux.org/portfolio/projects/data.png",
             type: "image",
             tags: ["Python", "pandas", "scikit-learn", "Data Analysis", "ML"],

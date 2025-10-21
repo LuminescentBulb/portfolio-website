@@ -20,7 +20,8 @@ export default function TransparentNavbar() {
         { id: "hero", label: "Home" },
         { id: "projects", label: "Projects" },
         { id: "experience", label: "Experience" },
-        { id: "about", label: "About" },
+        // { id: "about", label: "About" },
+        { id: "map", label: "Map" },
     ];
 
     return (

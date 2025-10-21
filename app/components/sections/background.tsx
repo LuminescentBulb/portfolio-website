@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {useWeather} from "~/components/WeatherContext";
 
 // Weather types
 type WeatherCondition = 'clear' | 'clouds' | 'rain' | 'drizzle' | 'snow' | 'thunderstorm';
@@ -10,32 +11,7 @@ interface WeatherData {
 }
 
 export default function WeatherBackground({ children }: { children: React.ReactNode }) {
-    const [weather, setWeather] = useState<WeatherData | null>(null);
-
-    // Fetch Portland weather
-    useEffect(() => {
-        async function fetchWeather() {
-            try {
-                const response = await fetch('https://weather-boy.bprhzccdfw.workers.dev/');
-                const data = await response.json();
-
-                const condition = data.weather[0].main.toLowerCase() as WeatherCondition;
-                setWeather({
-                    condition,
-                    temp: Math.round(data.main.temp),
-                    description: data.weather[0].description,
-                });
-            } catch (error) {
-                console.error('Failed to fetch weather:', error);
-                // Demo mode
-                setWeather({ condition: 'snow', temp: 55, description: 'light rain' });
-            }
-        }
-
-        fetchWeather();
-        const interval = setInterval(fetchWeather, 30 * 60 * 1000);
-        return () => clearInterval(interval);
-    }, []);
+    const { weather } = useWeather();
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
@@ -195,26 +171,6 @@ export default function WeatherBackground({ children }: { children: React.ReactN
 
                     {/* Extra dark overlay for storm */}
                     <div className="absolute inset-0 bg-slate-950/50" />
-                </div>
-            )}
-
-            {/* Weather badge */}
-            {weather && (
-                <div className="fixed top-4 right-4 bg-slate-900/80 backdrop-blur-md rounded-lg px-4 py-2 border border-slate-700/50 z-50 shadow-xl">
-                    <div className="flex items-center space-x-3">
-                        <div className="text-2xl">
-                            {weather.condition === 'clear' && '☀️'}
-                            {weather.condition === 'clouds' && '☁️'}
-                            {(weather.condition === 'rain' || weather.condition === 'drizzle') && '🌧️'}
-                            {weather.condition === 'snow' && '❄️'}
-                            {weather.condition === 'thunderstorm' && '⛈️'}
-                        </div>
-                        <div>
-                            <div className="text-white font-semibold">{weather.temp}°C</div>
-                            <div className="text-xs text-slate-400 capitalize">{weather.description}</div>
-                        </div>
-                        <div className="text-xs text-slate-500">Portland</div>
-                    </div>
                 </div>
             )}
 

@@ -33,10 +33,13 @@ export default function SplitHeroSection() {
 
                             <div className="space-y-4 text-slate-300 leading-relaxed max-w-xl">
                                 <p>
-                                    Hi, I'm a student at the University of Michigan with a strong interest in
+                                    Hi, I'm a student from Portland, Oregon currently attending the University of Michigan with a strong interest in
                                     building <strong className="text-white">interactive systems</strong> that simulate
                                     society and human behavior! Passionate about exploring the intersection
                                     of sociology and technology.
+                                </p>
+                                <p>
+                                    Feel free to connect me in one of my socials below or send me an email :)
                                 </p>
                             </div>
 

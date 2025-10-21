@@ -4,6 +4,10 @@ import HeroSection from "../components/sections/HeroSection";
 import WeatherBackground from "~/components/sections/background";
 import ProjectsSection from "~/components/sections/ProjectSection";
 import TransparentNavbar from "~/components/navbar";
+import ExperienceSection from "~/components/sections/ExperienceSection";
+import MapSection from "~/components/sections/MapSection";
+import {WeatherProvider} from "~/components/WeatherContext";
+import Footer from "~/components/Footer";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -21,10 +25,15 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
     return (
-        <WeatherBackground>
-            <TransparentNavbar />
-            <HeroSection />
-            <ProjectsSection />
-        </WeatherBackground>
+        <WeatherProvider>
+            <WeatherBackground>
+                <TransparentNavbar />
+                <HeroSection />
+                <ProjectsSection />
+                <ExperienceSection />
+                <MapSection />
+            </WeatherBackground>
+            <Footer />
+        </WeatherProvider>
     );
 }
