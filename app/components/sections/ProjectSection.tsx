@@ -25,8 +25,8 @@ export default function ProjectsSection() {
             id: 2,
             title: "Circadian",
             description: "iOS sleep tracking app with gamified features like streaks and leaderboards. Combines Swift frontend with Go backend, integrating Apple HealthKit and Calendar APIs for AI-assisted sleep schedule suggestions.",
-            type: "placeholder",
-            placeholder: "😴",
+            image: "https://cdn.portfolio.stellux.org/portfolio/projects/circadiantest.png",
+            type: "image",
             tags: ["Swift", "Go", "PostgreSQL", "Docker", "HealthKit"],
             status: "In Development",
             gradient: "from-purple-500/10 to-indigo-600/10",
@@ -37,8 +37,8 @@ export default function ProjectsSection() {
             id: 3,
             title: "Distributed Search Engine",
             description: "Scalable search engine using Hadoop-style MapReduce with Manager-Worker system. 7-stage pipeline with tf-idf weighting, PageRank integration, and RESTful API for parallel shard queries.",
-            type: "placeholder",
-            placeholder: "🔍",
+            image: "https://cdn.portfolio.stellux.org/portfolio/projects/search.png",
+            type: "image",
             tags: ["Python", "Hadoop", "Flask", "MapReduce", "REST API"],
             status: "Completed",
             gradient: "from-orange-500/10 to-red-600/10",
@@ -47,16 +47,29 @@ export default function ProjectsSection() {
         },
         {
             id: 4,
-            title: "Instagram Clone",
+            title: "Social Media App",
             description: "Full-stack social media app with Flask backend and React frontend. Implemented authentication, CRUD operations, infinite scroll, real-time likes, and commenting features.",
-            type: "placeholder",
-            placeholder: "📸",
+            image: "https://cdn.portfolio.stellux.org/portfolio/projects/social.png",
+            type: "image",
             tags: ["Flask", "React", "SQLite", "REST API"],
             status: "Completed",
             gradient: "from-pink-500/10 to-rose-600/10",
             icon: Globe,
             direction: "right",
         },
+        {
+            id: 5,
+            title: "Dishes to Data",
+            description: "Statistical analysis of 80,000+ Food.com recipes examining how nutritional content affects ratings. Implemented ETL pipeline and missingness analysis",
+            image: "https://cdn.portfolio.stellux.org/portfolio/projects/data.png",
+            type: "image",
+            tags: ["Python", "pandas", "scikit-learn", "Data Analysis", "ML"],
+            githubUrl: "https://github.com/LuminescentBulb/dishes-to-data",
+            status: "Completed",
+            gradient: "from-amber-500/10 to-orange-600/10",
+            icon: BarChart3,
+            direction: "left",
+        }
     ];
 
     useEffect(() => {
@@ -142,12 +155,6 @@ export default function ProjectsSection() {
                                                 title={project.title}
                                             />
                                         )}
-                                        {project.type === "placeholder" && (
-                                            <div className="flex items-center justify-center h-[400px] text-8xl">
-                                                {project.placeholder}
-                                            </div>
-                                        )}
-
                                     </div>
 
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -157,9 +164,6 @@ export default function ProjectsSection() {
                             <div className="w-full lg:w-1/2 space-y-6">
                                 <div>
                                     <div className="flex items-center space-x-3 mb-3">
-                                        <div className={`p-2 bg-gradient-to-br ${project.gradient} rounded-lg project-icon-rotate`}>
-                                            <project.icon className="w-5 h-5 text-white" />
-                                        </div>
                                         <h3 className="text-2xl md:text-3xl font-bold text-white">
                                             {project.title}
                                         </h3>

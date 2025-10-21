@@ -2,6 +2,7 @@ import { ChevronDown, Mail, ArrowRight } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { FaLinkedin } from "react-icons/fa";
 import { useState } from "react";
+import {MdEmail} from "react-icons/md";
 
 export default function SplitHeroSection() {
     const [heroNameIndex, setHeroNameIndex] = useState(0);
@@ -59,7 +60,14 @@ export default function SplitHeroSection() {
                                 >
                                     <FaLinkedin className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                                 </a>
-
+                                <a
+                                    href="mailto:taemin@stellux.org"
+                                    target="_blank"
+                                    className="p-3 bg-slate-800/50 hover:bg-slate-700/50 rounded-lg transition-all group"
+                                    aria-label="Email"
+                                >
+                                    <MdEmail className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -67,10 +75,9 @@ export default function SplitHeroSection() {
                     {/* Right Side - EU Dashboard Embed */}
                     <div className="relative flex items-center justify-center p-8 lg:p-12">
                         {/* Decorative Background */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/35 to-yellow-900/35 rounded-2xl blur-2xl" />
-
+                        <div className="absolute inset-x-0 h-[500px] lg:h-[800px] bg-gradient-to-br from-yellow-50/35 to-yellow-900/35 rounded-2xl blur-xl" />
                         {/* Dashboard Container */}
-                        <div className="relative w-full h-full min-h-[500px] lg:min-h-[700px] bg-slate-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
+                        <div className="relative w-full min-h-[500px] lg:min-h-[700px] bg-slate-900/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
                             {/* Header Bar */}
                             <div className="bg-slate-800/80 border-b border-slate-700/50 px-4 py-3 flex items-center space-x-2">
                                 <div className="flex space-x-2">
