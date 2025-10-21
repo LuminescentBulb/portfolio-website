@@ -1,11 +1,15 @@
 import { ChevronDown, Mail, ArrowRight } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { FaLinkedin } from "react-icons/fa";
+import { useState } from "react";
 
 export default function SplitHeroSection() {
-    const scrollToProjects = () => {
-        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-    };
+    const [heroNameIndex, setHeroNameIndex] = useState(0);
+    const nameList = ["Taemin Kim", "김태민", "金泰旻"];
+
+    function changeHeroName() {
+        setHeroNameIndex((heroNameIndex + 1) % nameList.length);
+    }
 
     return (
         <section id="hero" className="relative min-h-screen w-full overflow-hidden pb-20 pt-8">
@@ -17,15 +21,12 @@ export default function SplitHeroSection() {
                         <div className="space-y-6">
                             <div>
                                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-                                    <span className="text-white">
-                                        Taemin Kim
+                                    <span className="text-white hover: cursor-pointer" onClick={() => changeHeroName()}>
+                                        {nameList[heroNameIndex]}
                                     </span>
                                 </h1>
                                 <p className="text-xl md:text-2xl text-slate-300 mb-2">
                                     Data Science @ University of Michigan
-                                </p>
-                                <p className="text-sm text-slate-400">
-                                    Portland, Oregon
                                 </p>
                             </div>
 
@@ -58,6 +59,7 @@ export default function SplitHeroSection() {
                                 >
                                     <FaLinkedin className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                                 </a>
+
                             </div>
                         </div>
                     </div>
