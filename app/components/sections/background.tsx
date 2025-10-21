@@ -28,7 +28,7 @@ export default function WeatherBackground({ children }: { children: React.ReactN
             } catch (error) {
                 console.error('Failed to fetch weather:', error);
                 // Demo mode
-                setWeather({ condition: 'rain', temp: 55, description: 'light rain' });
+                setWeather({ condition: 'snow', temp: 55, description: 'light rain' });
             }
         }
 
@@ -39,6 +39,37 @@ export default function WeatherBackground({ children }: { children: React.ReactN
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-blue-950/20 to-purple-950/20">
+            {/* Clear sky video overlay */}
+            {weather?.condition === 'clear' && (
+                <div className="fixed inset-0 pointer-events-none z-10">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        className="w-full h-full object-cover"
+                        style={{
+                            opacity: 0.4,
+                            mixBlendMode: 'screen',
+                            filter: 'brightness(0.7) contrast(1.2)',
+                        }}
+                        onLoadedData={(e) => {
+                            const video = e.currentTarget;
+                            video.play().catch(err => console.log('Video play error:', err));
+                        }}
+                    >
+                        <source
+                            src="https://cdn.portfolio.stellux.org/portfolio/background/clear.mp4"
+                            type="video/mp4"
+                        />
+                    </video>
+
+                    {/* Dark overlay to maintain readability */}
+                    <div className="absolute inset-0 bg-slate-950/30" />
+                </div>
+            )}
+
             {/* Rain video overlay (rain & drizzle) */}
             {(weather?.condition === 'rain' || weather?.condition === 'drizzle') && (
                 <div className="fixed inset-0 pointer-events-none z-10">

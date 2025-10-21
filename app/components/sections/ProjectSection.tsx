@@ -10,9 +10,9 @@ export default function ProjectsSection() {
         {
             id: 1,
             title: "EU Intra-Migration Dashboard",
-            description: "Interactive visualization of European migration flows since EU expansion using Deck.gl and MapLibre. Features animated migration arcs, GeoJSON integration, and policy-focused UX.",
-            image: "https://eu-dashboard.stellux.org/?embedded=true",
-            type: "iframe",
+            description: "Interactive visualization of European migration flows (2004-2023) with time-series animation, country drill-downs, and rankings. Built with React, TypeScript, and deck.gl to explore demographic and economic shifts.",
+            image: "https://cdn.portfolio.stellux.org/portfolio/projects/EU.png",
+            type: "image",
             tags: ["React", "Deck.gl", "MapLibre", "TypeScript", "Python", "Pandas"],
             liveUrl: "https://eu-dashboard.stellux.org",
             githubUrl: "https://github.com/LuminescentBulb/intra-eu-migration",
@@ -23,27 +23,39 @@ export default function ProjectsSection() {
         },
         {
             id: 2,
-            title: "Political Simulator",
-            description: "Multiplayer economic strategy game simulating U.S. economy and population. Work in Progress.",
+            title: "Circadian",
+            description: "iOS sleep tracking app with gamified features like streaks and leaderboards. Combines Swift frontend with Go backend, integrating Apple HealthKit and Calendar APIs for AI-assisted sleep schedule suggestions.",
             type: "placeholder",
-            placeholder: "🗳️",
-            tags: ["React.js", "PostgreSQL", "Prisma"],
+            placeholder: "😴",
+            tags: ["Swift", "Go", "PostgreSQL", "Docker", "HealthKit"],
             status: "In Development",
-            gradient: "from-purple-500/10 to-pink-600/10",
+            gradient: "from-purple-500/10 to-indigo-600/10",
             icon: Database,
             direction: "right",
         },
         {
             id: 3,
-            title: "Dog Breed Classifier",
-            description: "Deep learning pipeline achieving 0.95+ accuracy using Vision Transformers and transfer learning. Custom CNN architecture with dropout and early stopping.",
+            title: "Distributed Search Engine",
+            description: "Scalable search engine using Hadoop-style MapReduce with Manager-Worker system. 7-stage pipeline with tf-idf weighting, PageRank integration, and RESTful API for parallel shard queries.",
             type: "placeholder",
-            placeholder: "🐕",
-            tags: ["PyTorch", "CNNs", "Transfer Learning", "ViTs"],
+            placeholder: "🔍",
+            tags: ["Python", "Hadoop", "Flask", "MapReduce", "REST API"],
             status: "Completed",
-            gradient: "from-green-500/10 to-blue-600/10",
+            gradient: "from-orange-500/10 to-red-600/10",
             icon: BarChart3,
             direction: "left",
+        },
+        {
+            id: 4,
+            title: "Instagram Clone",
+            description: "Full-stack social media app with Flask backend and React frontend. Implemented authentication, CRUD operations, infinite scroll, real-time likes, and commenting features.",
+            type: "placeholder",
+            placeholder: "📸",
+            tags: ["Flask", "React", "SQLite", "REST API"],
+            status: "Completed",
+            gradient: "from-pink-500/10 to-rose-600/10",
+            icon: Globe,
+            direction: "right",
         },
     ];
 
@@ -114,14 +126,6 @@ export default function ProjectsSection() {
                                         </div>
                                     )}
 
-                                    {project.featured && (
-                                        <div className="absolute top-4 left-4 z-20">
-                                            <span className="px-3 py-1 bg-blue-500/90 backdrop-blur-sm text-white text-xs font-medium rounded-full">
-                                                Featured
-                                            </span>
-                                        </div>
-                                    )}
-
                                     <div className={`relative bg-gradient-to-br ${project.gradient} min-h-[400px]`}>
                                         {project.type === "iframe" && (
                                             <iframe
@@ -130,11 +134,20 @@ export default function ProjectsSection() {
                                                 title={project.title}
                                             />
                                         )}
+                                        {project.type === "image" && (
+                                            <img
+                                                src={project.image}
+                                                className="w-full h-[400px] object-cover border-0"
+                                                alt={project.title}
+                                                title={project.title}
+                                            />
+                                        )}
                                         {project.type === "placeholder" && (
                                             <div className="flex items-center justify-center h-[400px] text-8xl">
                                                 {project.placeholder}
                                             </div>
                                         )}
+
                                     </div>
 
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -173,10 +186,10 @@ export default function ProjectsSection() {
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center space-x-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-lg font-medium transition-all shadow-lg hover:shadow-xl group/btn"
+                                            className="inline-flex items-center space-x-2 px-5 py-2.5 bg-amber-50 hover:from-blue-600 hover:to-purple-700 text-black rounded-lg font-medium transition-all shadow-lg hover:shadow-xl group/btn"
                                         >
                                             <ExternalLink className="w-4 h-4" />
-                                            <span>View Live</span>
+                                            <span>View</span>
                                             <ArrowRight className="w-4 h-4 project-arrow-slide" />
                                         </a>
                                     )}
@@ -188,7 +201,7 @@ export default function ProjectsSection() {
                                             className="inline-flex items-center space-x-2 px-5 py-2.5 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700 text-white rounded-lg font-medium transition-all hover:scale-105"
                                         >
                                             <SiGithub className="w-4 h-4" />
-                                            <span>Source Code</span>
+                                            <span>Source</span>
                                         </a>
                                     )}
                                 </div>

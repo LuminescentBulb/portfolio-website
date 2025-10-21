@@ -8,7 +8,7 @@ export default function SplitHeroSection() {
     };
 
     return (
-        <section id="hero" className="relative min-h-screen w-full overflow-hidden py-20">
+        <section id="hero" className="relative min-h-screen w-full overflow-hidden pb-20 pt-8">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 min-h-screen">
                     {/* Left Side - About Me */}
