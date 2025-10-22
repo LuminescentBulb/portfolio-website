@@ -159,7 +159,7 @@ export default function ExperienceSection() {
                 </div>
 
                 {/* Experience Timeline */}
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-4">
                     {experiences.map((exp, index) => (
                         <div
                             key={exp.id}
@@ -173,7 +173,7 @@ export default function ExperienceSection() {
                             <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-8 shadow-xl transition-all duration-300 h-full">
                                 <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-6">
                                     {/* Icon */}
-                                    <div className={`p-4 bg-gradient-to-br ${exp.gradient} rounded-xl`}>
+                                    <div className={`p-4 bg-gradient-to-br ${exp.gradient} rounded-xl self-start`}>
                                         <exp.icon className="w-8 h-8 text-white" />
                                     </div>
 

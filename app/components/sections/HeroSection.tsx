@@ -1,16 +1,121 @@
 import { ChevronDown, Mail, ArrowRight } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { FaLinkedin } from "react-icons/fa";
-import { useState } from "react";
+import {useState, useEffect, useMemo} from "react";
 import {MdEmail} from "react-icons/md";
+
+// Korean jamo constants
+const HANGUL_START = 0xAC00;
+const JONGSEONG_COUNT = 28;
+const JUNGSEONG_COUNT = 21;
+
+// Decompose a Korean syllable into its jamos
+function decomposeHangul(char: string): string[] {
+    const code = char.charCodeAt(0);
+
+    if (code < 0xAC00 || code > 0xD7A3) {
+        // Not a Korean syllable, return as-is
+        return [char];
+    }
+
+    const syllableIndex = code - HANGUL_START;
+    const jongseongIndex = syllableIndex % JONGSEONG_COUNT;
+    const jungseongIndex = ((syllableIndex - jongseongIndex) / JONGSEONG_COUNT) % JUNGSEONG_COUNT;
+    const choseongIndex = ((syllableIndex - jongseongIndex) / JONGSEONG_COUNT - jungseongIndex) / JUNGSEONG_COUNT;
+
+    const choseong = String.fromCharCode(0x1100 + choseongIndex);
+    const jungseong = String.fromCharCode(0x1161 + jungseongIndex);
+    const jongseong = jongseongIndex > 0 ? String.fromCharCode(0x11A7 + jongseongIndex) : '';
+
+    // Return progressive states
+    const states = [choseong];
+    states.push(choseong + jungseong);
+    if (jongseong) {
+        states.push(choseong + jungseong + jongseong);
+    }
+
+    return states;
+}
+
+function createTypingSequence(text: string): string[] {
+    const sequence: string[] = [''];
+    let currentText = '';
+
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const decomposed = decomposeHangul(char);
+
+        for (const state of decomposed) {
+            currentText = text.slice(0, i) + state;
+            sequence.push(currentText);
+        }
+    }
+
+    return sequence;
+}
+
+function createDeletingSequence(text: string): string[] {
+    const sequence: string[] = [];
+
+    for (let i = text.length; i >= 0; i--) {
+        sequence.push(text.slice(0, i));
+    }
+
+    return sequence;
+}
 
 export default function SplitHeroSection() {
     const [heroNameIndex, setHeroNameIndex] = useState(0);
-    const nameList = ["Taemin Kim", "김태민", "金泰旻"];
+    const [displayedText, setDisplayedText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const [sequenceIndex, setSequenceIndex] = useState(0);
 
-    function changeHeroName() {
-        setHeroNameIndex((heroNameIndex + 1) % nameList.length);
-    }
+    const nameList = ["Taemin Kim", "김태민", "金泰旻"];
+    const currentName = nameList[heroNameIndex];
+
+    const typingSequence = useMemo(() => createTypingSequence(currentName), [currentName]);
+    const deletingSequence = useMemo(() => createDeletingSequence(currentName), [currentName]);
+
+    useEffect(() => {
+        if (isPaused) {
+            const pauseTimeout = setTimeout(() => {
+                setIsPaused(false);
+                setIsDeleting(true);
+                setSequenceIndex(0); // Reset for deleting sequence
+            }, 2000);
+            return () => clearTimeout(pauseTimeout);
+        }
+
+        const currentSequence = isDeleting ? deletingSequence : typingSequence;
+
+        const timeout = setTimeout(() => {
+            if (!isDeleting) {
+                // Typing with construction
+                if (sequenceIndex < typingSequence.length - 1) {
+                    setSequenceIndex(sequenceIndex + 1);
+                    setDisplayedText(typingSequence[sequenceIndex + 1]);
+                } else {
+                    // Finished typing
+                    setIsPaused(true);
+                }
+            } else {
+                // Deleting whole characters
+                if (sequenceIndex < deletingSequence.length - 1) {
+                    setSequenceIndex(sequenceIndex + 1);
+                    setDisplayedText(deletingSequence[sequenceIndex + 1]);
+                } else {
+                    // Finished deleting, move to next name
+                    setIsDeleting(false);
+                    setHeroNameIndex((heroNameIndex + 1) % nameList.length);
+                    setSequenceIndex(0);
+                    setDisplayedText('');
+                }
+            }
+        }, isDeleting ? 150 : 220);
+
+        return () => clearTimeout(timeout);
+    }, [sequenceIndex, isDeleting, isPaused, heroNameIndex, typingSequence, deletingSequence]);
 
     return (
         <section id="hero" className="relative min-h-screen w-full overflow-hidden pb-20 pt-8">
@@ -22,8 +127,11 @@ export default function SplitHeroSection() {
                         <div className="space-y-6">
                             <div>
                                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-                                    <span className="text-white hover: cursor-pointer" onClick={() => changeHeroName()}>
-                                        {nameList[heroNameIndex]}
+                                    <span className="text-white">
+                                    {displayedText}
+                                        <span className="inline-block w-1 h-[1em] bg-white ml-1 animate-pulse align-middle"
+                                              style={{ verticalAlign: 'baseline' }}>
+                                        </span>
                                     </span>
                                 </h1>
                                 <p className="text-xl md:text-2xl text-slate-300 mb-2">
@@ -55,7 +163,7 @@ export default function SplitHeroSection() {
                                     <SiGithub className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                                 </a>
                                 <a
-                                    href="http://linkedin.com/in/taemin-kim-010344235/"
+                                    href="https://www.linkedin.com/in/taeminkm/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="p-3 bg-slate-800/50 hover:bg-slate-700/50 rounded-lg transition-all group"
