@@ -124,10 +124,10 @@ export default function ExperienceSection() {
                                 <p className="text-lg text-slate-300 mb-1">Bachelor of Science in Data Science</p>
                                 <p className="text-sm text-slate-400 mb-2">Minor in Mathematics & Spanish</p>
                                 <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-                  <span className="flex items-center space-x-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>Expected May 2027</span>
-                  </span>
+                                    <span className="flex items-center space-x-1">
+                                        <Calendar className="w-4 h-4" />
+                                        <span>Expected May 2027</span>
+                                    </span>
                                     <span>•</span>
                                     <span>GPA: 3.76 / 4.00</span>
                                     <span>•</span>
@@ -164,11 +164,10 @@ export default function ExperienceSection() {
                         <div
                             key={exp.id}
                             ref={(el) => itemRefs.current[index] = el}
-                            className={`transition-all duration-1000 ${
-                                visibleItems.includes(index)
+                            className={`transition-all duration-1000 ${visibleItems.includes(index)
                                     ? "opacity-100 translate-y-0"
                                     : "opacity-0 translate-y-16"
-                            }`}
+                                }`}
                         >
                             <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-8 shadow-xl transition-all duration-300 h-full">
                                 <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-6">
@@ -223,8 +222,8 @@ export default function ExperienceSection() {
                                 <div className="flex flex-wrap gap-2">
                                     {["Python", "JavaScript", "TypeScript", "SQL", "C++", "C#", "C", "Go", "Swift"].map((skill) => (
                                         <span key={skill} className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 text-slate-300 rounded-lg text-sm">
-                      {skill}
-                    </span>
+                                            {skill}
+                                        </span>
                                     ))}
                                 </div>
                             </div>
@@ -234,8 +233,8 @@ export default function ExperienceSection() {
                                 <div className="flex flex-wrap gap-2">
                                     {["React", "Next.js", "Node.js", "Flask", "Docker", "Git", "Prisma", "AWS"].map((skill) => (
                                         <span key={skill} className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 text-slate-300 rounded-lg text-sm">
-                      {skill}
-                    </span>
+                                            {skill}
+                                        </span>
                                     ))}
                                 </div>
                             </div>
@@ -245,8 +244,8 @@ export default function ExperienceSection() {
                                 <div className="flex flex-wrap gap-2">
                                     {["pandas", "NumPy", "scikit-learn", "PyTorch", "Plotly", "matplotlib"].map((skill) => (
                                         <span key={skill} className="px-3 py-1 bg-slate-800/50 border border-slate-700/50 text-slate-300 rounded-lg text-sm">
-                      {skill}
-                    </span>
+                                            {skill}
+                                        </span>
                                     ))}
                                 </div>
                             </div>

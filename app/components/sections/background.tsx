@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {useWeather} from "~/components/WeatherContext";
+import { useWeather } from "~/components/WeatherContext";
 
 // Weather types
 type WeatherCondition = 'clear' | 'clouds' | 'rain' | 'drizzle' | 'snow' | 'thunderstorm';

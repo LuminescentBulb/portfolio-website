@@ -20,6 +20,7 @@ export default function MapSection() {
                 </h2>
 
                 {/* Description */}
+                {/* Probably something about theme of veni vidi vici or just places I conquered by being there */}
                 <div className="flex items-center justify-center space-x-2 text-2xl text-slate-300 mb-8">
                     <MapPin className="w-6 h-6 text-blue-400" />
                     <span>Map of the World Coming Soon!</span>
@@ -30,7 +31,7 @@ export default function MapSection() {
                 <p className="text-slate-400 text-lg max-w-2xl mx-auto">
                     An interactive visualization is in the works. Stay tuned!
                 </p>
-                
+
             </div>
         </section>
     );

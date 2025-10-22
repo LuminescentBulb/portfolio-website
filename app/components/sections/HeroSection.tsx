@@ -1,8 +1,8 @@
 import { ChevronDown, Mail, ArrowRight } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { FaLinkedin } from "react-icons/fa";
-import {useState, useEffect, useMemo} from "react";
-import {MdEmail} from "react-icons/md";
+import { useState, useEffect, useMemo } from "react";
+import { MdEmail } from "react-icons/md";
 
 // Korean jamo constants
 const HANGUL_START = 0xAC00;
@@ -128,9 +128,9 @@ export default function SplitHeroSection() {
                             <div>
                                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
                                     <span className="text-white">
-                                    {displayedText}
+                                        {displayedText}
                                         <span className="inline-block w-1 h-[1em] bg-white ml-1 animate-pulse align-middle"
-                                              style={{ verticalAlign: 'baseline' }}>
+                                            style={{ verticalAlign: 'baseline' }}>
                                         </span>
                                     </span>
                                 </h1>

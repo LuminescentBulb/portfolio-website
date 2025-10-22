@@ -1,6 +1,6 @@
 import { ExternalLink, ArrowRight, Database, BarChart3, Globe } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import {SiGithub} from "@icons-pack/react-simple-icons";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 
 export default function ProjectsSection() {
     const [visibleProjects, setVisibleProjects] = useState([]);

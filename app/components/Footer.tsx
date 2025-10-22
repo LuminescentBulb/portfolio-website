@@ -18,13 +18,13 @@ export default function Footer() {
                     {/* Right - Weather Display */}
                     {!isLoading && weather && (
                         <div className="flex items-center space-x-3 text-sm bg-slate-900/50 px-4 py-2 rounded-lg border border-slate-700/50">
-              <span className="text-xl">
-                {weather.condition === 'clear' && '☀️'}
-                  {weather.condition === 'clouds' && '☁️'}
-                  {(weather.condition === 'rain' || weather.condition === 'drizzle') && '🌧️'}
-                  {weather.condition === 'snow' && '❄️'}
-                  {weather.condition === 'thunderstorm' && '⛈️'}
-              </span>
+                            <span className="text-xl">
+                                {weather.condition === 'clear' && '☀️'}
+                                {weather.condition === 'clouds' && '☁️'}
+                                {(weather.condition === 'rain' || weather.condition === 'drizzle') && '🌧️'}
+                                {weather.condition === 'snow' && '❄️'}
+                                {weather.condition === 'thunderstorm' && '⛈️'}
+                            </span>
                             <div>
                                 <div className="text-white font-medium">{weather.temp}°C</div>
                                 <div className="text-slate-400 text-xs capitalize">{weather.description}</div>
