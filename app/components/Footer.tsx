@@ -1,5 +1,4 @@
 import { useWeather } from './WeatherContext';
-import { Github, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
     const { weather, isLoading } = useWeather();

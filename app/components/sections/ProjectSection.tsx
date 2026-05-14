@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 
 export default function ProjectsSection() {
-    const [visibleProjects, setVisibleProjects] = useState([]);
-    const projectRefs = useRef([]);
+    const [visibleProjects, setVisibleProjects] = useState<number[]>([]);
+    const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     const projects = [
         {
@@ -121,7 +121,9 @@ export default function ProjectsSection() {
                     {projects.map((project, index) => (
                         <div
                             key={project.id}
-                            ref={(el) => projectRefs.current[index] = el}
+                            ref={(el) => {
+                                projectRefs.current[index] = el;
+                            }}
                             className={`group relative flex flex-col lg:flex gap-8 items-center transition-all duration-1000 ${project.direction === "left" ? "lg:flex-row" : "lg:flex-row-reverse"
                                 } ${visibleProjects.includes(index)
                                     ? "project-visible"
