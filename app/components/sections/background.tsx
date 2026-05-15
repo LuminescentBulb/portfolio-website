@@ -29,6 +29,8 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         loop
                         muted
                         playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
                         preload="auto"
                         className="w-full h-full object-cover"
                         style={{
@@ -60,6 +62,8 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         loop
                         muted
                         playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
                         preload="auto"
                         className="w-full h-full object-cover"
                         style={{
@@ -91,6 +95,8 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         loop
                         muted
                         playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
                         preload="auto"
                         className="w-full h-full object-cover"
                         style={{
@@ -122,6 +128,8 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         loop
                         muted
                         playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
                         preload="auto"
                         className="w-full h-full object-cover"
                         style={{
@@ -154,6 +162,8 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         loop
                         muted
                         playsInline
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
                         preload="auto"
                         className="w-full h-full object-cover"
                         style={{
