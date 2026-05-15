@@ -31,7 +31,6 @@ export default function Home() {
                 <HeroSection />
                 <ProjectsSection />
                 <ExperienceSection />
-                <MapSection />
             </WeatherBackground>
             <Footer />
         </WeatherProvider>
