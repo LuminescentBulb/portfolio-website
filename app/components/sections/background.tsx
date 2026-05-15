@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useWeather } from "~/components/WeatherContext";
 
-// Weather types
-type WeatherCondition = 'clear' | 'clouds' | 'rain' | 'drizzle' | 'snow' | 'thunderstorm';
+type WeatherCondition =
+    | 'clear'
+    | 'clouds'
+    | 'mist'
+    | 'rain'
+    | 'drizzle'
+    | 'snow'
+    | 'thunderstorm';
 
 interface WeatherData {
     condition: WeatherCondition;
@@ -77,8 +83,8 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                 </div>
             )}
 
-            {/* Cloudy video overlay */}
-            {weather?.condition === 'clouds' && (
+            {/* Cloudy video overlay (also used for mist) */}
+            {(weather?.condition === 'clouds' || weather?.condition === 'mist') && (
                 <div className="fixed inset-0 pointer-events-none z-10">
                     <video
                         autoPlay

@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useWeather } from './WeatherContext';
 
 export default function Footer() {
     const { weather, isLoading } = useWeather();
+    const [imgError, setImgError] = useState(false);
 
     return (
         <footer className="relative z-30 border-t border-slate-800/50 bg-slate-950/30 backdrop-blur-sm">
@@ -17,22 +19,60 @@ export default function Footer() {
                     {/* Right - Weather Display */}
                     {!isLoading && weather && (
                         <div className="flex items-center space-x-3 text-sm bg-slate-900/50 px-4 py-2 rounded-lg border border-slate-700/50">
-                            <span className="text-xl">
-                                {weather.condition === 'clear' && '☀️'}
-                                {weather.condition === 'clouds' && '☁️'}
-                                {(weather.condition === 'rain' || weather.condition === 'drizzle') && '🌧️'}
-                                {weather.condition === 'snow' && '❄️'}
-                                {weather.condition === 'thunderstorm' && '⛈️'}
-                            </span>
-                            <div>
-                                <div className="text-white font-medium">{weather.temp}°C</div>
-                                <div className="text-slate-400 text-xs capitalize">{weather.description}</div>
+                                {weather.iconUrl && !imgError ? (
+                                    <img
+                                        src={weather.iconUrl}
+                                        alt={weather.description}
+                                        className="w-8 h-8"
+                                        onError={() => setImgError(true)}
+                                    />
+                                ) : (
+                                    <span className="text-xl" aria-hidden>
+                                        {getFallbackEmoji(weather.condition)}
+                                    </span>
+                                )}
+
+                                <div>
+                                    <div className="text-white font-medium">{weather.temp}°C</div>
+                                    <div className="text-slate-400 text-xs capitalize">{weather.description}</div>
+                                </div>
+                                <span className="text-slate-500 text-xs">Portland</span>
                             </div>
-                            <span className="text-slate-500 text-xs">Portland</span>
-                        </div>
                     )}
                 </div>
             </div>
         </footer>
     );
 }
+
+    function getFallbackEmoji(condition?: string) {
+        switch (condition) {
+            case 'clear':
+                return '☀️';
+            case 'clouds':
+                return '☁️';
+            case 'rain':
+            case 'drizzle':
+                return '🌧️';
+            case 'snow':
+                return '❄️';
+            case 'thunderstorm':
+                return '⛈️';
+            case 'mist':
+            case 'fog':
+            case 'haze':
+                return '🌫️';
+            case 'smoke':
+                return '💨';
+            case 'sand':
+            case 'dust':
+            case 'ash':
+                return '🌪️';
+            case 'squall':
+                return '🌬️';
+            case 'tornado':
+                return '🌪️';
+            default:
+                return '❔';
+        }
+    }
