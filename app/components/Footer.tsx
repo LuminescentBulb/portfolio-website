@@ -12,7 +12,7 @@ export default function Footer() {
                     {/* Left - Copyright & Social Links */}
                     <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
                         <p className="text-slate-400 text-sm">
-                            © 2025 Taemin Kim. All rights reserved.
+                            © 2026 Taemin Kim. All rights reserved.
                         </p>
                     </div>
 

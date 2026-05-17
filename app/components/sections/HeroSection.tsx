@@ -135,7 +135,7 @@ export default function SplitHeroSection() {
                                     </span>
                                 </h1>
                                 <p className="text-xl md:text-2xl text-slate-300 mb-2">
-                                    Compute Science & Data Science @ University of Michigan
+                                    Computer Science & Data Science @ University of Michigan
                                 </p>
                             </div>
 
