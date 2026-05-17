@@ -1,20 +1,4 @@
-import { useState, useEffect } from 'react';
 import { useWeather } from "~/components/WeatherContext";
-
-type WeatherCondition =
-    | 'clear'
-    | 'clouds'
-    | 'mist'
-    | 'rain'
-    | 'drizzle'
-    | 'snow'
-    | 'thunderstorm';
-
-interface WeatherData {
-    condition: WeatherCondition;
-    temp: number;
-    description: string;
-}
 
 export default function WeatherBackground({ children }: { children: React.ReactNode }) {
     const { weather } = useWeather();
@@ -31,7 +15,7 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         playsInline
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen noremoteplayback"
-                        preload="auto"
+                        preload="metadata"
                         className="w-full h-full object-cover"
                         style={{
                             opacity: 0.4,
@@ -64,7 +48,7 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         playsInline
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen noremoteplayback"
-                        preload="auto"
+                        preload="metadata"
                         className="w-full h-full object-cover"
                         style={{
                             opacity: 0.4,
@@ -97,7 +81,7 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         playsInline
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen noremoteplayback"
-                        preload="auto"
+                        preload="metadata"
                         className="w-full h-full object-cover"
                         style={{
                             opacity: 0.3,
@@ -130,7 +114,7 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         playsInline
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen noremoteplayback"
-                        preload="auto"
+                        preload="metadata"
                         className="w-full h-full object-cover"
                         style={{
                             opacity: 0.5,
@@ -164,7 +148,7 @@ export default function WeatherBackground({ children }: { children: React.ReactN
                         playsInline
                         disablePictureInPicture
                         controlsList="nodownload nofullscreen noremoteplayback"
-                        preload="auto"
+                        preload="metadata"
                         className="w-full h-full object-cover"
                         style={{
                             opacity: 0.5,
